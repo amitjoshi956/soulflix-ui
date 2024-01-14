@@ -1,0 +1,30 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/color';
+@import 'assets/scss/variables';
+
+html {
+    font-size: 14px;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    @include no-margin;
+    @include no-padding;
+    background-color: $bg-color-primary;
+    @include font-style($font-family-primary, $font-size-base, $primary-color);
+
+    ul,
+    ol {
+        list-style: none;
+        @include no-margin;
+        @include no-padding;
+    }
+
+    #root {
+        height: 100%;
+        @include flex;
+        flex-direction: column;
+    }
+}
