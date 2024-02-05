@@ -1,5 +1,5 @@
 import { FC, useRef } from 'react';
-import { HeroCarouselItem } from 'core/base/type/hero-carousel';
+import { HeroCarouselItem } from 'core/base/types/hero-carousel';
 import CarouselItem from './CarouselItem';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
