@@ -12,6 +12,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
+            config: resolvedPath('./src/config'),
             assets: resolvedPath('./src/assets'),
             components: resolvedPath('./src/components'),
             core: resolvedPath('./src/core'),
