@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import landingPageSlice from 'core/api/landing-page/landingPage.slice';
 
 const rootReducer = combineReducers({
-    // Start adding reducers here
+    landingPage: landingPageSlice,
 });
+
+export type AppState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;
