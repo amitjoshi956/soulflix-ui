@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLandingPageCategories } from 'core/api/landing-page/landingPage.slice';
 import HeroCarousel from 'components/HeroCarousel';
 
 import './Home.scss';
+import { AppState } from 'core/store/rootReducer';
 
 const dummyItems = [
     {
@@ -30,6 +34,16 @@ const dummyItems = [
 ];
 
 const Home = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchLandingPageCategories());
+    }, []);
+
+    const { categories } = useSelector((state: AppState) => state.landingPage.data);
+
+    console.log('###Categories', categories);
+
     return (
         <div className="home">
             <section className="home__hero">
