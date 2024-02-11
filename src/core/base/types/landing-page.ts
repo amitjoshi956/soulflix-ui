@@ -1,20 +1,9 @@
-import { GenericState } from '.';
-import { Playlist } from './playlists';
-import { Video } from './videos';
+import { GenericState } from './store';
+import { Category } from './category';
 
-export type LandingPageCategoryData = {
-    id: string;
-    title: string;
-    videos: Video[];
-    playlists: Playlist[];
+export type LandingPageCategoriesData = {
+    categories: Category[];
     totalCount: number;
 };
 
-export type LandingPageCategory = GenericState<LandingPageCategoryData>;
-
-export type LandingPageData = {
-    categories: LandingPageCategory[];
-    totalCount: number;
-};
-
-export type LandingPageState = GenericState<LandingPageData>;
+export type LandingPageCategoryState = GenericState<LandingPageCategoriesData>;

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import landingPageSlice from 'core/api/landing-page/landingPage.slice';
+import landingPageSlice from 'core/api/landing-page/reducer';
 
 const rootReducer = combineReducers({
     landingPage: landingPageSlice,

@@ -1,12 +1,5 @@
-import { ApiStatus } from 'core/base/enums';
-
-export type GenericParams = {
-    limit: number;
-    offset: number;
-};
-
-export type GenericState<TData = unknown, TParams extends GenericParams = GenericParams> = {
+export type GenericApiResponse<TData = unknown> = {
     data: TData;
-    status: ApiStatus;
-    params?: TParams;
+    hasError?: boolean;
+    errorMessage?: string;
 };
