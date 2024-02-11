@@ -1,7 +1,7 @@
 import { ApiStatus } from 'core/base/enums';
-import { LandingPageState } from 'core/base/types/landing-page';
+import { LandingPageCategoryState } from 'core/base/types/landing-page';
 
-export const initialLandingPageState: LandingPageState = {
+export const initialCategoriesState: LandingPageCategoryState = {
     data: {
         categories: [],
         totalCount: 0,

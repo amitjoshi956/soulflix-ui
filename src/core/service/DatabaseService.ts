@@ -10,6 +10,7 @@ import {
     updateDoc,
 } from 'firebase/firestore';
 import { db } from 'config/firebase.config';
+import { GenericApiResponse } from 'core/base/types';
 
 export class DatabaseService {
     collectionName: string;
@@ -21,14 +22,22 @@ export class DatabaseService {
         this.collectionName = col;
     }
 
-    public async getAllDocs<TDoc>(query?: Query): Promise<TDoc[]> {
+    public async getAllDocs<TDoc>(query?: Query): Promise<GenericApiResponse<TDoc[]>> {
+        const response: GenericApiResponse<TDoc[]> = { data: [] };
         const source = query ? query : this.collectionRef;
-        const querySnapshot = await getDocs(source);
-        const fetchedDocs: TDoc[] = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-        })) as TDoc[];
-        return fetchedDocs;
+        try {
+            const querySnapshot = await getDocs(source);
+            const fetchedDocs: TDoc[] = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            })) as TDoc[];
+
+            response.data = fetchedDocs;
+            return response;
+        } catch (error) {
+            response.hasError = true;
+            return response;
+        }
     }
 
     public async getDocById<TDoc>(id: string): Promise<TDoc> {
