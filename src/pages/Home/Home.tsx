@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLandingPageCategories } from 'core/api/landing-page/categories/categories.slice';
+import { AppState } from 'core/store';
 import HeroCarousel from 'components/HeroCarousel';
 
 import './Home.scss';
-import { AppState } from 'core/store/rootReducer';
 
 const dummyItems = [
     {
@@ -40,7 +40,8 @@ const Home = () => {
         dispatch(fetchLandingPageCategories({}));
     }, []);
 
-    const { categories } = useSelector((state: AppState) => state.landingPage.categories.data);
+    const { categories = [] } = useSelector((state: AppState) => state.landingPage.categories.data);
+    const videoItems = categories[0]?.items ?? [];
 
     return (
         <div className="home">
@@ -49,8 +50,15 @@ const Home = () => {
                 <ul
                     style={{ marginTop: '1rem', backgroundColor: 'rebeccapurple', padding: '10px' }}
                 >
-                    {categories[0].items.map(({ id, title, description }) => (
-                        <li key={id}>{`${title} - ${description}`}</li>
+                    {videoItems.map(({ id, title, description }) => (
+                        <li
+                            key={id}
+                            style={{
+                                backgroundColor: 'turquoise',
+                                color: 'rebeccapurple',
+                                marginBottom: '10px',
+                            }}
+                        >{`${title} - ${description}`}</li>
                     ))}
                 </ul>
             </section>
