@@ -3,8 +3,4 @@
 .home {
     padding: 0 toRem(40px);
     @include flex-center;
-
-    &__hero {
-        overflow: scroll;
-    }
 }
