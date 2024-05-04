@@ -12,8 +12,8 @@ body {
     overflow: hidden;
     @include no-margin;
     @include no-padding;
-    background-color: $bg-color-primary;
-    @include font-style($font-family-primary, $font-size-base, $primary-color);
+    background-color: $bg-color--primary;
+    @include font-style($font-primary, $font-size--base, $color--primary);
 
     ul,
     ol {
