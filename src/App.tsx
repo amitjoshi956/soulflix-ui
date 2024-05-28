@@ -1,18 +1,20 @@
-import YTPlayer from 'components/base/YTPlayer';
+import { NavLink, Route, Routes } from 'react-router-dom';
+import Test from 'pages/Test';
 
 import './App.scss';
 
 function App() {
-    return (
+    const App = (
         <div className="app">
-            <div className="nav-temp">
-                <span>Soulflix</span>
-            </div>
-            <YTPlayer
-                videoId={'abmsniEmfh0'}
-                title={'Srila Prabhupada Interview - San Francisco'}
-            />
+            <NavLink to="/test">Test Page</NavLink>
         </div>
+    );
+
+    return (
+        <Routes>
+            <Route path="/" element={App} />
+            <Route path="/test" element={<Test />} />
+        </Routes>
     );
 }
 
