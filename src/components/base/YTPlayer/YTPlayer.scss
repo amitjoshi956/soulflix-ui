@@ -1,0 +1,11 @@
+.youtube-player {
+    // TODO: Make height container adjustable
+    height: calc(100vh - 70px);
+    width: 100%;
+
+    &__embedded-player {
+        border: none;
+        width: 100%;
+        height: 100%;
+    }
+}

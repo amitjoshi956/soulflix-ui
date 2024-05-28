@@ -2,11 +2,24 @@
 ******** FONT COLORS ********
 *****************************/
 
-$primary-color: #f0f7ee;
-$secondary-color: #77aca2;
+$color--app-title: linear-gradient(90deg, #e4b921 0%, #91750f 100%);
+$color--primary: #ededed;
+$color--secondary: #222222;
 
 /****************************
 ********* BG COLORS *********
 *****************************/
 
-$bg-color-primary: #02111b;
+$bg-color--primary: #10141a;
+$bg-color--secondary: #e1e1e1;
+$bg-color--tertiary: #20242a;
+
+/****************************
+******* PALLETE COLORS ********
+*****************************/
+
+$red-100: #ff0000;
+
+$grey-200: #777777;
+
+$white-300: #cecece;
