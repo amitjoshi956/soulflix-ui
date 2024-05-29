@@ -2,15 +2,17 @@ name: Soulflix CI
 
 on:
     push:
-        branches: [develop]
+        branches:
+            - develop
 
 jobs:
-    build:
+    build_and_deploy:
         runs-on: macos-12
-
         steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js
+            - name: Checkout Repo
+              uses: actions/checkout@v2
+
+            - name: Setup Node Environment
               uses: actions/setup-node@v2
               with:
                   node-version: '20.13.1'
@@ -27,10 +29,9 @@ jobs:
 
             # Only deploy if the workflow is triggered by a push to the main branch
             - name: Deploy App
-              if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
               uses: FirebaseExtended/action-hosting-deploy@v0
               with:
-                  repoToken: '${{ secrets.FIREBASE_TOKEN }}'
-                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SOULFLIX_APP_108 }}
                   channelId: live
                   projectId: soulflix-app-108
