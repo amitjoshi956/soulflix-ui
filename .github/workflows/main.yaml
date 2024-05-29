@@ -1,0 +1,36 @@
+name: Soulflix CI
+
+on:
+    push:
+        branches: [develop]
+
+jobs:
+    build:
+        runs-on: macos-12
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '20.13.1'
+
+            - name: Install Dependencies
+              run: npm install
+
+            # Disabling tests until we enter pre-production
+            # - name: Run Tests
+            # run: npm test
+
+            - name: Build
+              run: npm run build
+
+            # Only deploy if the workflow is triggered by a push to the main branch
+            - name: Deploy App
+              if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+              uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: '${{ secrets.FIREBASE_TOKEN }}'
+                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+                  channelId: live
+                  projectId: soulflix-app-108
