@@ -1,5 +1,5 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
-import Test from 'pages/Test';
+import TestRoutes from 'pages/Test/Test.routes';
 
 import './App.scss';
 
@@ -13,7 +13,7 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={App} />
-            <Route path="/test" element={<Test />} />
+            <Route path="/test" element={<TestRoutes />} />
         </Routes>
     );
 }
