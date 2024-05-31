@@ -1,18 +1,35 @@
 @import 'assets/scss/variables';
 @import 'assets/scss/color';
+@import 'assets/scss/mixins';
 
-// TODO: This is temporary nav-bar, this will be a separate component
-.nav-temp {
-    padding: toRem(20px) toRem(40px);
+.test-page {
+    padding: toRem(20px);
 
-    span {
-        font-family: $font-app-title;
-        font-size: $font-size--app-title;
-        background: -webkit-linear-gradient(-90deg, #e4b921 0%, #91750f 100%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 6px 4px 6px #00000040;
-        cursor: pointer;
+    // TODO: This is temporary nav-bar, this will be a separate component
+    &__temp-nav {
+        padding: toRem(20px) 0;
+
+        span {
+            font-family: $font-app-title;
+            font-size: $font-size--app-title;
+            background: -webkit-linear-gradient(-90deg, #e4b921 0%, #91750f 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 6px 4px 10px #00000040;
+            cursor: pointer;
+        }
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: toRem(20px);
+        row-gap: toRem(10px);
+    }
+
+    &__link {
+        @include font-style($font-primary, toRem(20px), $color--primary);
     }
 }

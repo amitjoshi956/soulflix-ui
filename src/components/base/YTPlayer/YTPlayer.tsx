@@ -20,7 +20,7 @@ const YTPlayer: FC<YTPlayerProps> = ({ videoId, title }) => {
     return (
         <div className="yt-player">
             <iframe
-                className="yt-player__embedded-player"
+                className="yt-player__iframe"
                 src={generateSrc(videoId)}
                 title={title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
