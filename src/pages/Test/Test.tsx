@@ -1,17 +1,26 @@
-import YTPlayer from 'components/base/YTPlayer';
+import { Link } from 'react-router-dom';
 
 import './Test.scss';
 
+const TestPages: { [key: string]: string } = {
+    'yt-player': 'YT-Player',
+};
+
 const Test = () => {
     return (
-        <div>
-            <div className="nav-temp">
+        <div className="test-page">
+            <div className="test-page__temp-nav">
                 <span>Soulflix</span>
             </div>
-            <YTPlayer
-                videoId={'abmsniEmfh0'}
-                title={'Srila Prabhupada Interview - San Francisco'}
-            />
+            <ul className="test-page__links">
+                {Object.keys(TestPages).map((route) => (
+                    <li>
+                        <Link className="test-page__link" to={`${route}`}>
+                            {TestPages[route]}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
