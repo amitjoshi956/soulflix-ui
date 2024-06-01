@@ -7,24 +7,54 @@ html {
 }
 
 body {
+    @include no-margin;
+    @include no-padding;
+    @include font-style($font-primary, $font-size--base, $color--primary);
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    @include no-margin;
-    @include no-padding;
     background-color: $bg-color--primary;
-    @include font-style($font-primary, $font-size--base, $color--primary);
 
     ul,
     ol {
+        @include no-margin;
+        @include no-padding;
         list-style: none;
+    }
+
+    #root {
+        @include flex;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         @include no-margin;
         @include no-padding;
     }
 
-    #root {
-        height: 100%;
-        @include flex;
-        flex-direction: column;
+    h1 {
+        font-size: $font-size--h1;
+    }
+    h2 {
+        font-size: $font-size--h2;
+    }
+    h3 {
+        font-size: $font-size--h3;
+    }
+    h4 {
+        font-size: $font-size--h4;
+    }
+    h5 {
+        font-size: $font-size--h5;
+    }
+    h6 {
+        font-size: $font-size--h6;
     }
 }

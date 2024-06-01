@@ -1,0 +1,31 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/color';
+@import 'assets/scss/variables';
+
+.movie-card {
+    width: toRem(192px);
+    border-radius: toRem(4px);
+    background-color: $bg-color--tertiary;
+
+    &__thumbnail {
+        width: toRem(192px);
+        height: toRem(108px);
+        object-fit: cover;
+        border-radius: toRem(4px) toRem(4px) 0 0;
+    }
+
+    &__meta {
+        padding: toRem(10px);
+    }
+
+    &__title {
+        max-width: 100%;
+        @include font-style(
+            $font-primary,
+            $font-size--base,
+            $color--primary,
+            $font-weight--regular
+        );
+        @include text-overflow-ellipsis;
+    }
+}
