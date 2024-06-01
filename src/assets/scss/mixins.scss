@@ -21,12 +21,18 @@
 ********** FONTS *********
 **************************/
 
-@mixin font-style($family, $size, $color, $weight: 400, $line-height: 1) {
+@mixin font-style($family, $size, $color, $weight: 400, $line-height: 1.15) {
     font-family: $family;
     font-size: $size;
     font-weight: $weight;
     color: $color;
     line-height: $line-height;
+}
+
+@mixin text-overflow-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /*************************
