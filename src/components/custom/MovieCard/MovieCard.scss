@@ -6,11 +6,17 @@
     width: toRem(192px);
     border-radius: toRem(4px);
     background-color: $bg-color--tertiary;
+    box-shadow: -6px 6px 4px $shadow--color-100, 6px 6px 8px $shadow--color-100;
+
+    &__preview {
+        display: contents;
+    }
 
     &__thumbnail {
         width: toRem(192px);
         height: toRem(108px);
         object-fit: cover;
+        object-position: top;
         border-radius: toRem(4px) toRem(4px) 0 0;
     }
 

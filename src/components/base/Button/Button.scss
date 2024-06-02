@@ -1,0 +1,69 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/variables';
+@import 'assets/scss/color';
+
+.button {
+    @include font-style($font-primary, $font-size--btn, $color--secondary, $font-weight--medium);
+    cursor: pointer;
+    border: none;
+    max-width: toRem(200px);
+    padding: toRem(8px) toRem(16px);
+    border-radius: toRem(4px);
+    background-color: $bg-color--secondary;
+    box-shadow: -6px 6px 4px $shadow--color-200, 6px 6px 8px $shadow--color-200;
+    opacity: 1;
+
+    &:hover {
+        opacity: 0.85;
+    }
+
+    &:active {
+        outline: 1px solid $color--primary;
+        outline-offset: 1px;
+    }
+
+    &--outlined {
+        box-sizing: border-box;
+        opacity: 0.6;
+        background-color: $grey-200;
+        border: 1.5px solid $color--primary;
+        color: $color--primary;
+
+        &:hover {
+            opacity: 0.35;
+        }
+
+        &:active {
+            outline: none;
+        }
+    }
+
+    &--text {
+        background-color: transparent;
+        color: $color--primary;
+        box-shadow: none;
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+
+    &--round {
+        padding: toRem(8px);
+        border-radius: 50%;
+        outline: 1px solid $color--secondary;
+    }
+
+    &__label {
+        @include text-overflow-ellipsis;
+    }
+
+    &__content {
+        @include flex-start-center;
+        gap: toRem(8px);
+
+        &--icon-right {
+            flex-direction: row-reverse;
+        }
+    }
+}
