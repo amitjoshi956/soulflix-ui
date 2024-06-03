@@ -8,6 +8,7 @@ type ButtonProps = {
     classname?: string;
     variant: 'default' | 'alt' | 'outlined' | 'text' | 'round-filled' | 'round-outlined';
     iconPlacement?: 'left' | 'right';
+    size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     Icon?: IconType;
     onClick?: () => void;
@@ -18,6 +19,7 @@ const Button: FC<ButtonProps> = ({
     classname = '',
     variant,
     iconPlacement = 'left',
+    size = 'medium',
     disabled = false,
     Icon,
     onClick,
@@ -27,8 +29,10 @@ const Button: FC<ButtonProps> = ({
 
     const btnContent = (
         <div className={`button__content button__content--icon-${iconPlacement}`}>
-            {Icon && <Icon className="button__icon" />}
-            {label && isNotRoundBtn && <span className="button__label">{label}</span>}
+            {Icon && <Icon className={`button__icon button__icon--${size}`} />}
+            {label && isNotRoundBtn && (
+                <span className={`button__label button__label--${size}`}>{label}</span>
+            )}
         </div>
     );
 

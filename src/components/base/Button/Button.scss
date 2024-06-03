@@ -24,21 +24,20 @@
     );
     @include hovered(0.85);
     @include clicked();
-    min-height: toRem(40px);
     max-width: 25ch;
     cursor: pointer;
     border: none;
     padding: toRem(8px) toRem(16px);
     border-radius: toRem(4px);
     background-color: $bg-color--secondary;
-    box-shadow: -6px 6px 4px $shadow--color-200, 6px 6px 8px $shadow--color-200;
+    box-shadow: -4px 4px 8px $shadow--color-200, 4px 4px 8px $shadow--color-200;
     opacity: 1;
 
     &--disabled {
-        @include hovered(0.5);
+        @include hovered(0.7);
         @include clicked(0, $grey-200, unset);
         cursor: not-allowed;
-        opacity: 0.5;
+        opacity: 0.7;
         position: relative;
         outline: unset;
 
@@ -60,13 +59,18 @@
         background-color: $grey-200;
         backdrop-filter: blur(8px);
         color: $color--primary;
+
+        .button__content {
+            min-height: toRem(24px);
+        }
     }
 
     &--outlined {
+        @include outline-style(2px, $color--primary, inherit);
         background-color: transparent;
         color: $color--primary;
         box-shadow: none;
-        @include outline-style(2px, $color--primary, inherit);
+        backdrop-filter: blur(8px);
     }
 
     &--text {
@@ -90,14 +94,22 @@
         background-color: transparent;
         color: $color--primary;
         box-shadow: none;
-
-        .button__icon {
-            @include icon-dimensions(toRem(32px));
-        }
     }
 
     &__label {
         @include text-overflow-ellipsis;
+
+        &--small {
+            font-size: $font-size--sm;
+        }
+
+        &--medium {
+            font-size: $font-size--md;
+        }
+
+        &--large {
+            font-size: $font-size--lg;
+        }
     }
 
     &__content {
@@ -110,6 +122,16 @@
     }
 
     &__icon {
-        @include icon-dimensions(toRem(24px));
+        &--small {
+            @include icon-dimensions(toRem(16px));
+        }
+
+        &--medium {
+            @include icon-dimensions(toRem(24px));
+        }
+
+        &--large {
+            @include icon-dimensions(toRem(32px));
+        }
     }
 }

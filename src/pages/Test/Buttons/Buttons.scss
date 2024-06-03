@@ -1,7 +1,14 @@
+.test-buttons-container {
+    padding: 20px;
+    background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/80d79040496883.5781e6228fd81.jpg')
+        no-repeat;
+    background-size: cover;
+}
+
 .test-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 50px 20px;
+    gap: 20px;
+    padding: 30px 20px;
 }
