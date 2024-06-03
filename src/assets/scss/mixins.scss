@@ -6,6 +6,24 @@
     @return calc($px/14px) * 1rem;
 }
 
+/************************
+****** DIMENSIONS ******
+*************************/
+
+@mixin icon-dimensions($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+/************************
+******* OUTLINES ********
+*************************/
+
+@mixin outline-style($width, $color, $offset) {
+    outline: $width solid $color;
+    outline-offset: $offset;
+}
+
 /*************************
 ******* SPACINGS *********
 **************************/
@@ -21,7 +39,13 @@
 ********** FONTS *********
 **************************/
 
-@mixin font-style($family, $size, $color, $weight: 400, $line-height: 1.15) {
+@mixin font-style(
+    $family,
+    $size,
+    $color,
+    $weight: $font-weight--regular,
+    $line-height: $line-height--normal
+) {
     font-family: $family;
     font-size: $size;
     font-weight: $weight;

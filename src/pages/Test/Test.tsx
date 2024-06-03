@@ -4,6 +4,7 @@ import './Test.scss';
 
 const TestPages: { [key: string]: string } = {
     'yt-player': 'YT-Player',
+    buttons: 'Buttons',
 };
 
 const Test = () => {
