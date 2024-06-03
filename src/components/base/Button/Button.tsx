@@ -6,8 +6,9 @@ import './Button.scss';
 type ButtonProps = {
     label?: string;
     classname?: string;
-    variant: 'default' | 'outlined' | 'text' | 'round';
+    variant: 'default' | 'alt' | 'outlined' | 'text' | 'round-filled' | 'round-outlined';
     iconPlacement?: 'left' | 'right';
+    disabled?: boolean;
     Icon?: IconType;
     onClick?: () => void;
 };
@@ -17,19 +18,23 @@ const Button: FC<ButtonProps> = ({
     classname = '',
     variant,
     iconPlacement = 'left',
+    disabled = false,
     Icon,
     onClick,
 }) => {
+    const btnModifierClassSuffix = disabled ? 'disabled' : variant;
+    const isNotRoundBtn = variant !== 'round-filled' && variant !== 'round-outlined';
+
     const btnContent = (
         <div className={`button__content button__content--icon-${iconPlacement}`}>
             {Icon && <Icon className="button__icon" />}
-            {label && variant !== 'round' && <span className="button__label">{label}</span>}
+            {label && isNotRoundBtn && <span className="button__label">{label}</span>}
         </div>
     );
 
     return (
         <button
-            className={`button button--${variant} ${classname}`}
+            className={`button button--${btnModifierClassSuffix} ${classname}`}
             aria-label={`${label} button`}
             onClick={onClick}
         >

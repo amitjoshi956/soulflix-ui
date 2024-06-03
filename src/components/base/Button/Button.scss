@@ -2,56 +2,98 @@
 @import 'assets/scss/variables';
 @import 'assets/scss/color';
 
+@mixin hovered($opacity) {
+    &:hover {
+        opacity: $opacity;
+    }
+}
+
+@mixin clicked($outline-width: 2px, $outline-color: $color--primary, $outline-offset: 2px) {
+    &:active {
+        @include outline-style($outline-width, $outline-color, $outline-offset);
+    }
+}
+
 .button {
-    @include font-style($font-primary, $font-size--btn, $color--secondary, $font-weight--medium);
+    @include font-style(
+        $font-primary,
+        $font-size--btn,
+        $color--secondary,
+        $font-weight--medium,
+        $line-height--normal
+    );
+    @include hovered(0.85);
+    @include clicked();
+    min-height: toRem(40px);
+    max-width: 25ch;
     cursor: pointer;
     border: none;
-    max-width: toRem(200px);
     padding: toRem(8px) toRem(16px);
     border-radius: toRem(4px);
     background-color: $bg-color--secondary;
     box-shadow: -6px 6px 4px $shadow--color-200, 6px 6px 8px $shadow--color-200;
     opacity: 1;
 
-    &:hover {
-        opacity: 0.85;
+    &--disabled {
+        @include hovered(0.5);
+        @include clicked(0, $grey-200, unset);
+        cursor: not-allowed;
+        opacity: 0.5;
+        position: relative;
+        outline: unset;
+
+        .button__label {
+            color: $grey-200;
+        }
+
+        .button__icon {
+            color: $grey-200;
+        }
     }
 
-    &:active {
-        outline: 1px solid $color--primary;
-        outline-offset: 1px;
+    &--alt {
+        // TODO: Fix opacity
+        @include hovered(0.6);
+        @include clicked(2px, $color--primary, 2px);
+        box-sizing: border-box;
+        opacity: 0.85;
+        background-color: $grey-200;
+        backdrop-filter: blur(8px);
+        color: $color--primary;
     }
 
     &--outlined {
-        box-sizing: border-box;
-        opacity: 0.6;
-        background-color: $grey-200;
-        border: 1.5px solid $color--primary;
+        background-color: transparent;
         color: $color--primary;
-
-        &:hover {
-            opacity: 0.35;
-        }
-
-        &:active {
-            outline: none;
-        }
+        box-shadow: none;
+        @include outline-style(2px, $color--primary, inherit);
     }
 
     &--text {
         background-color: transparent;
         color: $color--primary;
         box-shadow: none;
-
-        &:hover {
-            opacity: 0.85;
-        }
     }
 
-    &--round {
+    &--round-filled {
         padding: toRem(8px);
         border-radius: 50%;
-        outline: 1px solid $color--secondary;
+        outline: none;
+    }
+
+    &--round-outlined {
+        @include outline-style(2px, $grey-200, 0px);
+        @include clicked(2px, $color--primary, 0px);
+        min-height: unset;
+        padding: toRem(4px);
+        border-radius: 50%;
+        background-color: transparent;
+        color: $color--primary;
+        box-shadow: none;
+
+        .button__icon {
+            @include icon-dimensions(toRem(32px));
+        }
     }
 
     &__label {
@@ -65,5 +107,9 @@
         &--icon-right {
             flex-direction: row-reverse;
         }
+    }
+
+    &__icon {
+        @include icon-dimensions(toRem(24px));
     }
 }
