@@ -1,14 +1,13 @@
 @import 'assets/scss/mixins';
 @import 'assets/scss/variables';
-@import 'assets/scss/color';
 
-@mixin hovered($opacity) {
+@mixin hover-effect($opacity) {
     &:hover {
         opacity: $opacity;
     }
 }
 
-@mixin clicked($outline-width: 2px, $outline-color: $color--primary, $outline-offset: 2px) {
+@mixin click-effect($outline-width: 2px, $outline-color: $color--primary, $outline-offset: 2px) {
     &:active {
         @include outline-style($outline-width, $outline-color, $outline-offset);
     }
@@ -22,51 +21,50 @@
         $font-weight--medium,
         $line-height--normal
     );
-    @include hovered(0.85);
-    @include clicked();
-    min-height: toRem(40px);
+    @include hover-effect(0.9);
+    @include click-effect();
     max-width: 25ch;
     cursor: pointer;
     border: none;
     padding: toRem(8px) toRem(16px);
     border-radius: toRem(4px);
     background-color: $bg-color--secondary;
-    box-shadow: -6px 6px 4px $shadow--color-200, 6px 6px 8px $shadow--color-200;
+    box-shadow: $box-shadow;
     opacity: 1;
 
-    &--disabled {
-        @include hovered(0.5);
-        @include clicked(0, $grey-200, unset);
+    &:disabled {
+        @include hover-effect(0.85);
+        @include click-effect(0, $btn-default-color--disabled, unset);
+        opacity: 0.85;
+        pointer-events: none;
         cursor: not-allowed;
-        opacity: 0.5;
-        position: relative;
-        outline: unset;
-
-        .button__label {
-            color: $grey-200;
-        }
-
-        .button__icon {
-            color: $grey-200;
-        }
+        color: $btn-default-color--disabled;
     }
 
     &--alt {
-        // TODO: Fix opacity
-        @include hovered(0.6);
-        @include clicked(2px, $color--primary, 2px);
+        @include hover-effect(0.8);
+        @include click-effect(2px, $color--primary, 2px);
         box-sizing: border-box;
-        opacity: 0.85;
+        opacity: 0.9;
         background-color: $grey-200;
-        backdrop-filter: blur(8px);
+        @include bg-blur();
         color: $color--primary;
+
+        &:disabled {
+            color: $btn-alt-color--disabled;
+        }
     }
 
     &--outlined {
+        @include outline-style(2px, $color--primary, inherit);
         background-color: transparent;
         color: $color--primary;
         box-shadow: none;
-        @include outline-style(2px, $color--primary, inherit);
+        @include bg-blur();
+
+        &:disabled {
+            color: $btn-alt-color--disabled;
+        }
     }
 
     &--text {
@@ -83,7 +81,8 @@
 
     &--round-outlined {
         @include outline-style(2px, $grey-200, 0px);
-        @include clicked(2px, $color--primary, 0px);
+        @include click-effect(2px, $color--primary, 0px);
+        @include bg-blur(2px);
         min-height: unset;
         padding: toRem(4px);
         border-radius: 50%;
@@ -91,13 +90,25 @@
         color: $color--primary;
         box-shadow: none;
 
-        .button__icon {
-            @include icon-dimensions(toRem(32px));
+        &:disabled {
+            color: $grey-200;
         }
     }
 
     &__label {
         @include text-overflow-ellipsis;
+
+        &--small {
+            font-size: $font-size--sm;
+        }
+
+        &--medium {
+            font-size: $font-size--md;
+        }
+
+        &--large {
+            font-size: $font-size--lg;
+        }
     }
 
     &__content {
@@ -110,6 +121,18 @@
     }
 
     &__icon {
-        @include icon-dimensions(toRem(24px));
+        color: currentColor;
+
+        &--small {
+            @include icon-dimensions(toRem(16px));
+        }
+
+        &--medium {
+            @include icon-dimensions(toRem(24px));
+        }
+
+        &--large {
+            @include icon-dimensions(toRem(32px));
+        }
     }
 }

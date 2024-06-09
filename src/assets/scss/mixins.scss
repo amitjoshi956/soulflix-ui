@@ -79,6 +79,12 @@
     align-items: center;
 }
 
+@mixin flex-space-bw-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /*************************
 ******* SCROLLBAR ********
 **************************/
@@ -103,4 +109,11 @@
     &::-webkit-scrollbar:hover {
         cursor: pointer !important;
     }
+}
+
+/*************************
+********* EFFECTS ********
+**************************/
+@mixin bg-blur($blur-radius: 8px) {
+    backdrop-filter: blur($blur-radius);
 }
