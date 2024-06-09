@@ -110,3 +110,10 @@
         cursor: pointer !important;
     }
 }
+
+/*************************
+********* EFFECTS ********
+**************************/
+@mixin bg-blur($blur-radius: 8px) {
+    backdrop-filter: blur($blur-radius);
+}

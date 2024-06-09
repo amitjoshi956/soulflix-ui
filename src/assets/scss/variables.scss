@@ -1,4 +1,5 @@
 @import 'assets/scss/mixins';
+@import 'assets/scss/color';
 
 /****************************
 *********** FONTS ***********
@@ -32,3 +33,5 @@ $font-weight--black: 900;
 
 $line-height--normal: normal;
 $line-height--default: 1.15;
+
+$box-shadow: -4px 4px 8px $shadow--color-200, 4px 4px 8px $shadow--color-200;

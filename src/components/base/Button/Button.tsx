@@ -15,7 +15,7 @@ type ButtonProps = {
 };
 
 const Button: FC<ButtonProps> = ({
-    label,
+    label = '',
     classname = '',
     variant,
     iconPlacement = 'left',
@@ -24,7 +24,6 @@ const Button: FC<ButtonProps> = ({
     Icon,
     onClick,
 }) => {
-    const btnModifierClassSuffix = disabled ? 'disabled' : variant;
     const isNotRoundBtn = variant !== 'round-filled' && variant !== 'round-outlined';
 
     const btnContent = (
@@ -38,7 +37,8 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button
-            className={`button button--${btnModifierClassSuffix} ${classname}`}
+            className={`button button--${variant} ${classname}`.trim()}
+            disabled={disabled}
             aria-label={`${label} button`}
             onClick={onClick}
         >
