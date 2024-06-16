@@ -85,6 +85,12 @@
     align-items: center;
 }
 
+@mixin flex-start-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 /*************************
 ******* SCROLLBAR ********
 **************************/
@@ -114,6 +120,12 @@
 /*************************
 ********* EFFECTS ********
 **************************/
+
 @mixin bg-blur($blur-radius: 8px) {
     backdrop-filter: blur($blur-radius);
+}
+
+@mixin box-shadow($x-offset, $y-offset, $blur-radius, $color: $shadow--color-200) {
+    box-shadow: calc(-1 * $x-offset) $y-offset $blur-radius $color,
+        $x-offset $y-offset $blur-radius $color;
 }

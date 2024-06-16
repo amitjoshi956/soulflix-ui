@@ -1,5 +1,4 @@
 @import 'assets/scss/mixins';
-@import 'assets/scss/color';
 
 /****************************
 *********** FONTS ***********
@@ -8,6 +7,7 @@
 $font-app-title: 'Bebas Neue', 'Roboto', sans-serif;
 $font-primary: 'Roboto', 'Helvetica', sans-serif;
 
+$font-size--xs: toRem(11px);
 $font-size--sm: toRem(12px);
 $font-size--base: toRem(14px);
 $font-size--md: toRem(16px);
@@ -34,4 +34,4 @@ $font-weight--black: 900;
 $line-height--normal: normal;
 $line-height--default: 1.15;
 
-$box-shadow: -4px 4px 8px $shadow--color-200, 4px 4px 8px $shadow--color-200;
+$aspect-ratio--landscape: 16 / 9;
