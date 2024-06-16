@@ -2,7 +2,7 @@
 @import 'assets/scss/color';
 @import 'assets/scss/variables';
 
-.movie-card {
+.slider-card {
     @include box-shadow(toRem(6px), toRem(6px), toRem(8px), $shadow--color-100);
     width: toRem(208px);
     height: toRem(117px);

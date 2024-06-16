@@ -3,16 +3,16 @@ import { AddIcon, ArrowDownIcon, PlayIcon } from 'assets/icons';
 import Button from 'components/base/Button';
 import YTPlayer from 'components/base/YTPlayer';
 
-import './MovieCard.scss';
+import './SliderCard.scss';
 
-type MovieCardProps = {
+type SliderCardProps = {
     videoId: string;
     title: string;
     thumbnail: string;
     tags: string[];
 };
 
-const MovieCard: FC<MovieCardProps> = ({ videoId, title, thumbnail, tags }) => {
+const SliderCard: FC<SliderCardProps> = ({ videoId, title, thumbnail, tags }) => {
     const [showFullPreview, setShowFullPreview] = useState<boolean>(false);
 
     const handleOnHoverChange = useCallback((e: MouseEvent<HTMLElement>) => {
@@ -22,26 +22,26 @@ const MovieCard: FC<MovieCardProps> = ({ videoId, title, thumbnail, tags }) => {
 
     const previewItem = showFullPreview ? (
         <YTPlayer
-            className="movie-card__preview-video"
+            className="slider-card__preview-video"
             videoId={videoId}
             title={title}
             playerParams={{ autoplay: true, allowFullScreen: false }}
         />
     ) : (
-        <img className="movie-card__thumbnail" src={thumbnail} alt={title} />
+        <img className="slider-card__thumbnail" src={thumbnail} alt={title} />
     );
 
     return (
         <div
-            className="movie-card"
+            className="slider-card"
             onMouseEnter={(e) => handleOnHoverChange(e)}
             onMouseLeave={(e) => handleOnHoverChange(e)}
         >
-            <div className="movie-card__preview">{previewItem}</div>
-            <div className="movie-card__meta">
-                <p className="movie-card__title">{title}</p>
-                <div className="movie-card__controls">
-                    <div className="movie-card__controls-left">
+            <div className="slider-card__preview">{previewItem}</div>
+            <div className="slider-card__meta">
+                <p className="slider-card__title">{title}</p>
+                <div className="slider-card__controls">
+                    <div className="slider-card__controls-left">
                         <Button
                             variant="round-filled"
                             size="medium"
@@ -55,7 +55,7 @@ const MovieCard: FC<MovieCardProps> = ({ videoId, title, thumbnail, tags }) => {
                             Icon={AddIcon}
                         />
                     </div>
-                    <div className="movie-card__controls-right">
+                    <div className="slider-card__controls-right">
                         <Button
                             variant="round-outlined"
                             size="medium"
@@ -64,9 +64,9 @@ const MovieCard: FC<MovieCardProps> = ({ videoId, title, thumbnail, tags }) => {
                         />
                     </div>
                 </div>
-                <ul className="movie-card__tags">
+                <ul className="slider-card__tags">
                     {tags.slice(0, 3).map((tag) => (
-                        <li className="movie-card__tag" key={tag}>
+                        <li className="slider-card__tag" key={tag}>
                             {tag}
                         </li>
                     ))}
@@ -76,4 +76,4 @@ const MovieCard: FC<MovieCardProps> = ({ videoId, title, thumbnail, tags }) => {
     );
 };
 
-export default MovieCard;
+export default SliderCard;
