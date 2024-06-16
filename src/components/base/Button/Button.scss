@@ -1,5 +1,6 @@
 @import 'assets/scss/mixins';
 @import 'assets/scss/variables';
+@import 'assets/scss/color';
 
 @mixin hover-effect($opacity) {
     &:hover {
@@ -23,13 +24,13 @@
     );
     @include hover-effect(0.9);
     @include click-effect();
+    @include box-shadow(toRem(4px), toRem(4px), toRem(8px), $shadow--color-100);
     max-width: 25ch;
     cursor: pointer;
     border: none;
     padding: toRem(8px) toRem(16px);
     border-radius: toRem(4px);
     background-color: $bg-color--secondary;
-    box-shadow: $box-shadow;
     opacity: 1;
 
     &:disabled {
@@ -74,7 +75,7 @@
     }
 
     &--round-filled {
-        padding: toRem(8px);
+        padding: toRem(6px);
         border-radius: 50%;
         outline: none;
     }

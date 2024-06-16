@@ -11,10 +11,13 @@ function App() {
     );
 
     return (
-        <Routes>
-            <Route path="/" element={App} />
-            <Route path="/test/*" element={<TestRoutes />} />
-        </Routes>
+        <>
+            <Routes>
+                <Route path="/" element={App} />
+                <Route path="/test/*" element={<TestRoutes />} />
+            </Routes>
+            <div id="modal"></div>
+        </>
     );
 }
 

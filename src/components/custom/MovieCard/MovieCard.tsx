@@ -1,45 +1,76 @@
+import { FC, useCallback, useState, MouseEvent } from 'react';
+import { AddIcon, ArrowDownIcon, PlayIcon } from 'assets/icons';
 import Button from 'components/base/Button';
-import { MdPlayArrow, MdAdd, MdKeyboardArrowDown } from 'react-icons/md';
+import YTPlayer from 'components/base/YTPlayer';
 
 import './MovieCard.scss';
 
-const MovieCard = () => {
+type MovieCardProps = {
+    videoId: string;
+    title: string;
+    thumbnail: string;
+    tags: string[];
+};
+
+const MovieCard: FC<MovieCardProps> = ({ videoId, title, thumbnail, tags }) => {
+    const [showFullPreview, setShowFullPreview] = useState<boolean>(false);
+
+    const handleOnHoverChange = useCallback((e: MouseEvent<HTMLElement>) => {
+        e.stopPropagation();
+        setShowFullPreview((prev) => !prev);
+    }, []);
+
+    const previewItem = showFullPreview ? (
+        <YTPlayer
+            className="movie-card__preview-video"
+            videoId={videoId}
+            title={title}
+            playerParams={{ autoplay: true, allowFullScreen: false }}
+        />
+    ) : (
+        <img className="movie-card__thumbnail" src={thumbnail} alt={title} />
+    );
+
     return (
-        <div className="movie-card">
-            <div className="movie-card__preview">
-                <img
-                    className="movie-card__thumbnail"
-                    src="https://www.mayapur.com/wp-content/uploads/2017/10/RNS-1024x576.jpg"
-                    alt="movie-card"
-                />
-            </div>
+        <div
+            className="movie-card"
+            onMouseEnter={(e) => handleOnHoverChange(e)}
+            onMouseLeave={(e) => handleOnHoverChange(e)}
+        >
+            <div className="movie-card__preview">{previewItem}</div>
             <div className="movie-card__meta">
-                <p className="movie-card__title">Glories of Srila Gopal Bhatta Goswami</p>
+                <p className="movie-card__title">{title}</p>
                 <div className="movie-card__controls">
                     <div className="movie-card__controls-left">
                         <Button
                             variant="round-filled"
-                            size="small"
+                            size="medium"
                             label="Watch now"
-                            Icon={MdPlayArrow}
+                            Icon={PlayIcon}
                         />
                         <Button
                             variant="round-outlined"
-                            size="small"
+                            size="medium"
                             label="Add to watch list"
-                            Icon={MdAdd}
+                            Icon={AddIcon}
                         />
                     </div>
                     <div className="movie-card__controls-right">
                         <Button
                             variant="round-outlined"
-                            size="small"
+                            size="medium"
                             label="More details"
-                            Icon={MdKeyboardArrowDown}
+                            Icon={ArrowDownIcon}
                         />
                     </div>
                 </div>
-                <div className="movie-card__tags"></div>
+                <ul className="movie-card__tags">
+                    {tags.slice(0, 3).map((tag) => (
+                        <li className="movie-card__tag" key={tag}>
+                            {tag}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     );

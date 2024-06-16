@@ -3,46 +3,83 @@
 @import 'assets/scss/variables';
 
 .movie-card {
-    // TODO: Adjust height and width as per design
-    width: toRem(240px);
+    @include box-shadow(toRem(6px), toRem(6px), toRem(8px), $shadow--color-100);
+    width: toRem(208px);
+    height: toRem(117px);
     border-radius: toRem(4px);
     background-color: $bg-color--tertiary;
-    box-shadow: -6px 6px 4px $shadow--color-100, 6px 6px 8px $shadow--color-100;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+
+    &:hover {
+        width: toRem(320px);
+        height: auto;
+        border-radius: toRem(6px);
+    }
 
     &__preview {
-        display: contents;
+        @include flex-center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__preview-video {
+        border-radius: toRem(4px) toRem(4px) 0 0;
     }
 
     &__thumbnail {
         width: 100%;
-        height: 100%;
+        aspect-ratio: $aspect-ratio--landscape;
         object-fit: cover;
         object-position: top;
-        border-radius: toRem(4px) toRem(4px) 0 0;
     }
 
     &__meta {
-        padding: toRem(10px);
+        padding: toRem(10px) toRem(10px) toRem(12px);
+        transition: ease-in-out 0.2s;
     }
 
     &__controls {
         @include flex-space-bw-center;
-        margin-top: toRem(8px);
+        margin: toRem(12px) 0 toRem(16px);
     }
 
     &__controls-left {
         @include flex-center;
-        column-gap: toRem(8px);
+        column-gap: toRem(10px);
     }
 
     &__title {
-        max-width: 100%;
-        @include font-style(
-            $font-primary,
-            $font-size--base,
-            $color--primary,
-            $font-weight--regular
-        );
+        @include font-style($font-primary, $font-size--md, $color--primary, $font-weight--medium);
         @include text-overflow-ellipsis;
+        max-width: 100%;
+    }
+
+    &__tags {
+        @include flex-start-center;
+        column-gap: toRem(16px);
+        margin-top: toRem(16px);
+    }
+
+    &__tag {
+        @include font-style($font-primary, $font-size--sm, $white-300, $font-weight--regular);
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 2px);
+            margin: auto toRem(6px);
+            width: toRem(4px);
+            height: toRem(4px);
+            border-radius: 50%;
+            background-color: $grey-200;
+        }
+
+        &:last-child::after {
+            content: none;
+        }
     }
 }
