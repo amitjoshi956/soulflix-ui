@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import 'assets/scss/mixins';
 
 /****************************
@@ -34,4 +35,4 @@ $font-weight--black: 900;
 $line-height--normal: normal;
 $line-height--default: 1.15;
 
-$aspect-ratio--landscape: 16 / 9;
+$aspect-ratio--landscape: math.div(16, 9);
