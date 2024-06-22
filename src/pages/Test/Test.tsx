@@ -15,7 +15,7 @@ const Test = () => {
             </div>
             <ul className="test-page__links">
                 {Object.keys(TestPages).map((route) => (
-                    <li>
+                    <li key={route}>
                         <Link className="test-page__link" to={`${route}`}>
                             {TestPages[route]}
                         </Link>

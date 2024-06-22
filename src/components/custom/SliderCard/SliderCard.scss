@@ -1,22 +1,30 @@
 @import 'assets/scss/mixins';
 @import 'assets/scss/color';
 @import 'assets/scss/variables';
+@import 'assets/scss/animations';
+
+@mixin show {
+    display: block;
+}
+
+@mixin hide {
+    display: none;
+}
 
 .slider-card {
     @include box-shadow(toRem(6px), toRem(6px), toRem(8px), $shadow--color-100);
     width: toRem(208px);
-    height: toRem(117px);
     border-radius: toRem(4px);
     background-color: $bg-color--tertiary;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: ease-in-out 0.2s;
 
     &:hover {
-        width: toRem(320px);
-        height: auto;
-        border-radius: toRem(6px);
+        width: toRem(256px);
+        transform: scaleX(1.2) scaleY(1.2);
+        border-radius: toRem(5px);
+        z-index: 10;
     }
 
     &__preview {
@@ -25,8 +33,29 @@
         overflow: hidden;
     }
 
-    &__preview-video {
+    &__video {
         border-radius: toRem(4px) toRem(4px) 0 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            user-select: none;
+        }
+
+        &--show {
+            @include show;
+            animation: fade-in 2s forwards;
+        }
+
+        &--hide {
+            @include hide;
+            animation: fade-out 2s forwards;
+        }
     }
 
     &__thumbnail {
@@ -34,11 +63,20 @@
         aspect-ratio: $aspect-ratio--landscape;
         object-fit: cover;
         object-position: top;
+
+        &--show {
+            @include show;
+            animation: fade-in 1s forwards;
+        }
+
+        &--hide {
+            @include hide;
+            animation: fade-out 1s forwards;
+        }
     }
 
     &__meta {
         padding: toRem(10px) toRem(10px) toRem(12px);
-        transition: ease-in-out 0.2s;
     }
 
     &__controls {

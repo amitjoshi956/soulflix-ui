@@ -1,5 +1,6 @@
-import { FC, useCallback, useState, MouseEvent } from 'react';
+import { FC, useState, MouseEvent } from 'react';
 import { AddIcon, ArrowDownIcon, PlayIcon } from 'assets/icons';
+import { PLAYER_DEFAULT } from 'core/base/consts/ytPlayer';
 import Button from 'components/base/Button';
 import YTPlayer from 'components/base/YTPlayer';
 
@@ -7,72 +8,111 @@ import './SliderCard.scss';
 
 type SliderCardProps = {
     videoId: string;
+    startTime?: number;
+    endTime?: number;
     title: string;
     thumbnail: string;
     tags: string[];
 };
 
-const SliderCard: FC<SliderCardProps> = ({ videoId, title, thumbnail, tags }) => {
+const SliderCard: FC<SliderCardProps> = ({
+    videoId,
+    startTime = PLAYER_DEFAULT.START_AT,
+    endTime,
+    title,
+    thumbnail,
+    tags,
+}) => {
     const [showFullPreview, setShowFullPreview] = useState<boolean>(false);
 
-    const handleOnHoverChange = useCallback((e: MouseEvent<HTMLElement>) => {
+    const handleHoverChange = (e: MouseEvent<HTMLElement>, show: boolean) => {
         e.stopPropagation();
-        setShowFullPreview((prev) => !prev);
-    }, []);
+        showFullPreview !== show && setShowFullPreview(show);
+    };
 
-    const previewItem = showFullPreview ? (
-        <YTPlayer
-            className="slider-card__preview-video"
-            videoId={videoId}
-            title={title}
-            playerParams={{ autoplay: true, allowFullScreen: false }}
-        />
-    ) : (
-        <img className="slider-card__thumbnail" src={thumbnail} alt={title} />
-    );
+    const handlePlay = () => {
+        // TODO: To be implemented
+    };
+
+    const handleAddToMyList = () => {
+        // TODO: To be implemented
+    };
+
+    const handleShowMoreDetails = () => {
+        // TODO: To be implemented
+    };
 
     return (
-        <div
+        <article
             className="slider-card"
-            onMouseEnter={(e) => handleOnHoverChange(e)}
-            onMouseLeave={(e) => handleOnHoverChange(e)}
+            onMouseOver={(e) => handleHoverChange(e, true)}
+            onMouseLeave={(e) => handleHoverChange(e, false)}
         >
-            <div className="slider-card__preview">{previewItem}</div>
-            <div className="slider-card__meta">
-                <p className="slider-card__title">{title}</p>
-                <div className="slider-card__controls">
-                    <div className="slider-card__controls-left">
-                        <Button
-                            variant="round-filled"
-                            size="medium"
-                            label="Watch now"
-                            Icon={PlayIcon}
-                        />
-                        <Button
-                            variant="round-outlined"
-                            size="medium"
-                            label="Add to watch list"
-                            Icon={AddIcon}
-                        />
-                    </div>
-                    <div className="slider-card__controls-right">
-                        <Button
-                            variant="round-outlined"
-                            size="medium"
-                            label="More details"
-                            Icon={ArrowDownIcon}
-                        />
-                    </div>
-                </div>
-                <ul className="slider-card__tags">
-                    {tags.slice(0, 3).map((tag) => (
-                        <li className="slider-card__tag" key={tag}>
-                            {tag}
-                        </li>
-                    ))}
-                </ul>
+            <div className="slider-card__preview">
+                <img
+                    className={`slider-card__thumbnail slider-card__thumbnail--${
+                        !showFullPreview ? 'show' : 'hide'
+                    }`}
+                    src={thumbnail}
+                    alt={title}
+                />
+                {showFullPreview && (
+                    <YTPlayer
+                        className={`slider-card__video slider-card__video--${
+                            showFullPreview ? 'show' : 'hide'
+                        }`}
+                        videoId={videoId}
+                        title={title}
+                        playerParams={{
+                            autoplay: true,
+                            disableKeyboard: true,
+                            startTime,
+                            endTime: endTime ?? startTime + PLAYER_DEFAULT.END_DURATION,
+                            loop: true,
+                        }}
+                    />
+                )}
             </div>
-        </div>
+            {showFullPreview && (
+                <div className="slider-card__meta">
+                    <p className="slider-card__title">{title}</p>
+                    <div className="slider-card__controls">
+                        <div className="slider-card__controls-left">
+                            <Button
+                                variant="round-filled"
+                                size="medium"
+                                label="Watch now"
+                                Icon={PlayIcon}
+                                onClick={handlePlay}
+                            />
+                            <Button
+                                variant="round-outlined"
+                                size="medium"
+                                label="Add to watch list"
+                                Icon={AddIcon}
+                                onClick={handleAddToMyList}
+                            />
+                        </div>
+                        <div className="slider-card__controls-right">
+                            <Button
+                                variant="round-outlined"
+                                size="medium"
+                                label="More details"
+                                Icon={ArrowDownIcon}
+                                onClick={handleShowMoreDetails}
+                            />
+                        </div>
+                    </div>
+                    <ul className="slider-card__tags">
+                        {tags.slice(0, 3).map((tag) => (
+                            <li className="slider-card__tag" key={tag}>
+                                {tag}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </article>
     );
 };
 
