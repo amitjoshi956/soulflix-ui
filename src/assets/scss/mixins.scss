@@ -129,3 +129,7 @@
     box-shadow: calc(-1 * $x-offset) $y-offset $blur-radius $color,
         $x-offset $y-offset $blur-radius $color;
 }
+
+@mixin text-shadow($x-offset, $y-offset, $blur-radius, $color: $shadow--color-200) {
+    text-shadow: $x-offset $y-offset $blur-radius $color;
+}
