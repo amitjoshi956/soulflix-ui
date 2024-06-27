@@ -1,0 +1,40 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/color';
+@import 'assets/scss/variables';
+
+.app-header {
+    @include flex-start-center;
+    padding: toRem(20px) toRem(40px);
+    width: calc(100vw - toRem(80px));
+
+    &__title {
+        @include text-shadow(6px, 4px, 10px, $shadow--color-200);
+        margin-right: toRem(60px);
+        font-family: $font-app-title;
+        font-size: $font-size--app-title;
+        background: -webkit-linear-gradient(-90deg, $gold-100 0%, $gold-200 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        cursor: pointer;
+    }
+
+    &__navigation {
+        @include flex-space-bw-center;
+        width: 100%;
+    }
+
+    &__nav-links {
+        @include flex-start-center;
+        column-gap: toRem(40px);
+    }
+
+    &__link {
+        @include font-style($font-primary, $font-size--md, $color--primary, $font-weight--regular);
+        text-decoration: none;
+
+        &--active {
+            color: $gold-100;
+        }
+    }
+}

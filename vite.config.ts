@@ -20,4 +20,7 @@ export default defineConfig({
             pages: resolvedPath('./src/pages'),
         },
     },
+    build: {
+        sourcemap: false,
+    },
 });
