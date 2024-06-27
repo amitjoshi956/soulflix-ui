@@ -1,5 +1,7 @@
+import { Suspense, lazy } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import TestRoutes from 'pages/Test/Test.routes';
+
+const TestRoutes = lazy(() => import('pages/Test/Test.routes'));
 
 import './App.scss';
 
@@ -10,13 +12,16 @@ function App() {
         </div>
     );
 
+    // TODO: replace temp loader with common loader component
     return (
         <>
-            <Routes>
-                <Route path="/" element={App} />
-                <Route path="/test/*" element={<TestRoutes />} />
-            </Routes>
-            <div id="modal"></div>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route path="/" element={App} />
+                    <Route path="/test/*" element={<TestRoutes />} />
+                </Routes>
+                <div id="modal"></div>
+            </Suspense>
         </>
     );
 }
