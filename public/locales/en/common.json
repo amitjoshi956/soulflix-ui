@@ -1,3 +1,11 @@
 {
-  "soulflix": "SoulFlix"
+    "soulflix": "SoulFlix",
+    "appHeader": {
+        "home": "Home",
+        "movies": "Movies",
+        "series": "Series",
+        "podcasts": "Podcasts",
+        "watchlist": "Watch list",
+        "myAccount": "My account"
+    }
 }

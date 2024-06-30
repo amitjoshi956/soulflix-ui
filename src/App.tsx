@@ -20,7 +20,6 @@ function App() {
                     <Route path="/" element={App} />
                     <Route path="/test/*" element={<TestRoutes />} />
                 </Routes>
-                <div id="modal"></div>
             </Suspense>
         </>
     );

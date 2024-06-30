@@ -4,15 +4,21 @@
 
 .app-header {
     @include flex-start-center;
+    @include bg-blur(2px);
     padding: toRem(20px) toRem(40px);
     width: calc(100vw - toRem(80px));
+    background: linear-gradient(180deg, rgba(17, 17, 17, 0.75) 0%, rgba(17, 17, 17, 0) 100%);
+
+    &__title-container {
+        margin-right: toRem(60px);
+        user-select: none;
+    }
 
     &__title {
-        @include text-shadow(6px, 4px, 10px, $shadow--color-200);
-        margin-right: toRem(60px);
+        @include drop-shadow(4px, 4px, 5px, $black-400);
         font-family: $font-app-title;
         font-size: $font-size--app-title;
-        background: -webkit-linear-gradient(-90deg, $gold-100 0%, $gold-200 100%);
+        background: -webkit-linear-gradient(-45deg, $gold-100 50%, $gold-200 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -24,17 +30,47 @@
         width: 100%;
     }
 
-    &__nav-links {
+    &__navigation-primary {
         @include flex-start-center;
         column-gap: toRem(40px);
     }
 
     &__link {
         @include font-style($font-primary, $font-size--md, $color--primary, $font-weight--regular);
+        @include flex-center;
         text-decoration: none;
+        border: none;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: toRem(-4px);
+            height: 2px;
+            width: 105%;
+            border-radius: 2px;
+            opacity: 0;
+            background: linear-gradient(45deg, $gold-100 50%, $gold-200 100%);
+            transition: opacity 0.3s ease-in-out;
+        }
 
         &--active {
-            color: $gold-100;
+            &::after {
+                opacity: 1;
+            }
         }
+    }
+
+    &__navigation-secondary {
+        @include flex-start-center;
+    }
+
+    &__my-account.button {
+        @include font-style($font-primary, $font-size--md, $color--primary, $font-weight--regular);
+        background-color: $red-200;
+    }
+
+    &__my-account-icon.button__icon {
+        stroke-width: 1px;
     }
 }

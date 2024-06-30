@@ -5,7 +5,8 @@ import './Button.scss';
 
 type ButtonProps = {
     label?: string;
-    classname?: string;
+    className?: string;
+    iconClassName?: string;
     variant: 'default' | 'alt' | 'outlined' | 'text' | 'round-filled' | 'round-outlined';
     iconPlacement?: 'left' | 'right';
     size?: 'small' | 'medium' | 'large';
@@ -16,7 +17,8 @@ type ButtonProps = {
 
 const Button: FC<ButtonProps> = ({
     label = '',
-    classname = '',
+    className = '',
+    iconClassName = '',
     variant,
     iconPlacement = 'left',
     size = 'medium',
@@ -28,7 +30,9 @@ const Button: FC<ButtonProps> = ({
 
     const btnContent = (
         <div className={`button__content button__content--icon-${iconPlacement}`}>
-            {Icon && <Icon className={`button__icon button__icon--${size}`} />}
+            {Icon && (
+                <Icon className={`button__icon button__icon--${size} ${iconClassName}`.trim()} />
+            )}
             {label && isNotRoundBtn && (
                 <span className={`button__label button__label--${size}`}>{label}</span>
             )}
@@ -37,7 +41,7 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <button
-            className={`button button--${variant} ${classname}`.trim()}
+            className={`button button--${variant} ${className}`.trim()}
             disabled={disabled}
             aria-label={`${label} button`}
             onClick={onClick}

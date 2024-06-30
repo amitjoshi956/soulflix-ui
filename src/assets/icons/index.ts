@@ -7,4 +7,14 @@ import {
     MdOutlineVolumeUp as VolumeUpOutlineIcon,
 } from 'react-icons/md';
 
-export { PlayIcon, AddIcon, ArrowDownIcon, CheckedIcon, VolumeOffOutlineIcon, VolumeUpOutlineIcon };
+import { DiAtom as AtomIcon } from 'react-icons/di';
+
+export {
+    PlayIcon,
+    AddIcon,
+    ArrowDownIcon,
+    CheckedIcon,
+    VolumeOffOutlineIcon,
+    VolumeUpOutlineIcon,
+    AtomIcon,
+};
