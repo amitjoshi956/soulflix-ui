@@ -130,6 +130,10 @@
         $x-offset $y-offset $blur-radius $color;
 }
 
+@mixin drop-shadow($x-offset, $y-offset, $blur-radius: 5px, $color: $shadow--color-200) {
+    filter: drop-shadow($x-offset $y-offset $blur-radius $color);
+}
+
 @mixin text-shadow($x-offset, $y-offset, $blur-radius, $color: $shadow--color-200) {
     text-shadow: $x-offset $y-offset $blur-radius $color;
 }
