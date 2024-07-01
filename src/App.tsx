@@ -21,7 +21,9 @@ function App() {
             <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route path={ROUTES.HOME} element={App} />
-                    {isDevEnv && <Route path={ROUTES.TEST} element={<TestRoutes />} />}
+                    {isDevEnv && (
+                        <Route path={`${ROUTES.TEST}/${ROUTES.ANY}`} element={<TestRoutes />} />
+                    )}
                     <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
                     <Route path={ROUTES.ANY} element={<Navigate to={ROUTES.NOT_FOUND} />} />
                 </Routes>
