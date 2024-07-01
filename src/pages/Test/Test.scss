@@ -3,13 +3,11 @@
 @import 'assets/scss/mixins';
 
 .test-page {
-    padding: toRem(20px);
+    padding: 0 toRem(20px) toRem(20px);
 
     // TODO: This is temporary nav-bar, this will be a separate component
     &__temp-nav {
-        padding: toRem(20px) 0;
-
-        span {
+        a {
             font-family: $font-app-title;
             font-size: $font-size--app-title;
             background: -webkit-linear-gradient(-90deg, #e4b921 0%, #91750f 100%);

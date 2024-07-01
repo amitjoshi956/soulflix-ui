@@ -12,7 +12,7 @@ const Test = () => {
     return (
         <div className="test-page">
             <div className="test-page__temp-nav">
-                <span>Soulflix</span>
+                <a href="/">Soulflix</a>
             </div>
             <ul className="test-page__links">
                 {Object.keys(TestPages).map((route) => (

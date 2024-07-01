@@ -1,7 +1,11 @@
 import { Suspense, lazy } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
+import { isDevEnv } from 'common/utils/env';
+import { Routes as ROUTES } from 'core/base/consts/routes';
+import Loader from 'components/custom/Loader';
 
 const TestRoutes = lazy(() => import('pages/Test/Test.routes'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 import './App.scss';
 
@@ -12,13 +16,14 @@ function App() {
         </div>
     );
 
-    // TODO: replace temp loader with common loader component
     return (
         <>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader />}>
                 <Routes>
-                    <Route path="/" element={App} />
-                    <Route path="/test/*" element={<TestRoutes />} />
+                    <Route path={ROUTES.HOME} element={App} />
+                    {isDevEnv && <Route path={ROUTES.TEST} element={<TestRoutes />} />}
+                    <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
+                    <Route path={ROUTES.ANY} element={<Navigate to={ROUTES.NOT_FOUND} />} />
                 </Routes>
             </Suspense>
         </>

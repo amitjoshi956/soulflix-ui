@@ -5,4 +5,6 @@ export const Routes = {
     PODCASTS: '/podcasts',
     WATCHLIST: '/watch-list',
     TEST: '/test',
+    NOT_FOUND: '/not-found',
+    ANY: '*',
 };
