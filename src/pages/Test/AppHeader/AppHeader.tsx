@@ -1,4 +1,4 @@
-import AppHeader from 'components/custom/Navigation/AppHeader';
+import AppHeader from 'components/custom/AppHeader';
 
 import './AppHeader.scss';
 
