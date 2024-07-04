@@ -26,6 +26,7 @@ body {
         @include flex;
         height: 100%;
         flex-direction: column;
+        overflow-y: scroll;
     }
 
     p,

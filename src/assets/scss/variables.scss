@@ -35,4 +35,18 @@ $font-weight--black: 900;
 $line-height--normal: normal;
 $line-height--default: 1.15;
 
+/*****************************
+********* RESOLUTION *********
+*****************************/
 $aspect-ratio--landscape: math.div(16, 9);
+
+/****************************
+********** Z-INDEX **********
+*****************************/
+
+$z-index--level-1: 10;
+$z-index--level-2: 20;
+$z-index--level-3: 30;
+$z-index--level-4: 40;
+$z-index--level-5: 50;
+$z-index--level-6: 60;
