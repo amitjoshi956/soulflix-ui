@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 const resolvedPath = (p: string) => path.resolve(__dirname, p);
+const isDevEnv = !import.meta.env || import.meta.env.VITE_NODE_ENV === 'development';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,10 +18,12 @@ export default defineConfig({
             assets: resolvedPath('./src/assets'),
             components: resolvedPath('./src/components'),
             core: resolvedPath('./src/core'),
+            layouts: resolvedPath('./src/layouts'),
             pages: resolvedPath('./src/pages'),
         },
     },
     build: {
-        sourcemap: false,
+        sourcemap: isDevEnv,
+        minify: !isDevEnv,
     },
 });
