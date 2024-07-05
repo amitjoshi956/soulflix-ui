@@ -1,0 +1,20 @@
+{
+    "name": "SoulFlix",
+    "short_name": "SoulFlix",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#eaeaea",
+    "background_color": "#10141a",
+    "icons": [
+        {
+            "src": "/SoulFlix-Logo__128x128.svg",
+            "sizes": "128x128",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/SoulFlix-Logo__128x128.svg",
+            "sizes": "256x256",
+            "type": "image/svg+xml"
+        }
+    ]
+}
