@@ -7,7 +7,19 @@ const AppLayout = () => {
     return (
         <div className="app-layout">
             <AppHeader />
-            <Billboard />
+            <Billboard
+                videoId="cgsmjYXs8m0"
+                title="Purpose of Life"
+                onPlay={() => {
+                    // TODO: implement logic
+                }}
+                onShowMoreDetails={() => {
+                    // TODO: implement logic
+                }}
+                onToggleVolume={() => {
+                    // TODO: implement logic
+                }}
+            />
             <div style={{ height: '100vh' }}></div>
         </div>
     );

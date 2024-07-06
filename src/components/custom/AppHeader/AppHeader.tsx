@@ -20,23 +20,23 @@ const AppHeader = () => {
             </div>
             <nav className="app-header__navigation">
                 <ul className="app-header__navigation-primary">
-                    {NavigationConfig.filter(({ name }) => !(!isDevEnv && name === 'Test')).map(
-                        ({ name, link }) => (
-                            <li key={name}>
-                                <NavLink
-                                    className={({ isActive }) =>
-                                        !isActive
-                                            ? 'app-header__link'
-                                            : 'app-header__link app-header__link--active'
-                                    }
-                                    to={link}
-                                    aria-label={name}
-                                >
-                                    {name}
-                                </NavLink>
-                            </li>
-                        )
-                    )}
+                    {NavigationConfig.filter(
+                        ({ nameKey }) => !(!isDevEnv && nameKey === 'test')
+                    ).map(({ nameKey, link }) => (
+                        <li key={nameKey}>
+                            <NavLink
+                                className={({ isActive }) =>
+                                    !isActive
+                                        ? 'app-header__link'
+                                        : 'app-header__link app-header__link--active'
+                                }
+                                to={link}
+                                aria-label={`${nameKey} page`}
+                            >
+                                {t(nameKey, { keyPrefix: 'appHeader' })}
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
                 <div className="app-header__navigation-secondary">
                     <Button
