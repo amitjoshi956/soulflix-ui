@@ -10,9 +10,10 @@ body {
     @include no-margin;
     @include no-padding;
     @include font-style($font-primary, $font-size--base, $color--primary);
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     overflow: hidden;
+    overflow-y: scroll;
     background-color: $bg-color--primary;
 
     ul,
@@ -24,9 +25,7 @@ body {
 
     #root {
         @include flex;
-        height: 100%;
         flex-direction: column;
-        overflow-y: scroll;
     }
 
     p,
