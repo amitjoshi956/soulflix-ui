@@ -15,6 +15,11 @@
     }
 }
 
+/* Global style properties */
+* {
+    --padding-x: #{toRem(40px)};
+}
+
 html {
     font-size: 14px;
 }
