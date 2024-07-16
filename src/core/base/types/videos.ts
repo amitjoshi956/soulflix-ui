@@ -5,10 +5,13 @@ export type Video = {
     channelId: string;
     runtime: number;
     description?: string;
-    thumbnail?: string;
+    thumbnail: string;
     uploadDate: Date;
     releaseDate: Date;
     categories: string[];
     views: number;
     likes: number;
+    startTime?: number;
+    endTime?: number;
+    tags: string[];
 };

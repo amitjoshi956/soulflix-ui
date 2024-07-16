@@ -2,6 +2,11 @@
 @import 'assets/scss/color';
 @import 'assets/scss/variables';
 
+/* Global style properties */
+* {
+    --padding-x: #{toRem(40px)};
+}
+
 html {
     font-size: 14px;
 }
@@ -24,8 +29,7 @@ body {
     }
 
     #root {
-        @include flex;
-        flex-direction: column;
+        @include flex(normal, normal, column);
     }
 
     p,
