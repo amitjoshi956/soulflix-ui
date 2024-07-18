@@ -1,10 +1,16 @@
 @import 'assets/scss/mixins';
 @import 'assets/scss/color';
 @import 'assets/scss/variables';
+@import 'assets/scss/media-query';
 
 /* Global style properties */
 * {
-    --padding-x: #{toRem(40px)};
+    --padding-x: #{toRem(48px)};
+    --items-per-page: 6;
+
+    @include tablet {
+        --items-per-page: 4;
+    }
 }
 
 html {

@@ -1,0 +1,56 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/variables';
+@import 'assets/scss/color';
+
+.slider {
+    --btn-icon-visibility: hidden;
+    --list-col-gap: 0.2vw;
+
+    @include flex(space-between, normal, column);
+    width: 100vw;
+    row-gap: toRem(16px);
+
+    &__carousel {
+        @include flex(center, center);
+        height: 100%;
+        position: relative;
+
+        &:hover {
+            --btn-icon-visibility: visible;
+        }
+    }
+
+    &__mask {
+        @include flex(center, center);
+        width: calc(100% - var(--padding-x) * 2);
+        height: 100%;
+    }
+
+    &__list {
+        --slider-index: 0;
+        @include flex-start-center;
+        transform: translateX(calc(var(--slider-index) * -100%));
+        scroll-behavior: smooth;
+        transition: transform 300ms ease-in-out;
+    }
+
+    &__list-item {
+        @include flex(center, center);
+        flex-shrink: 0;
+        box-sizing: border-box;
+        position: relative;
+        width: calc(100% / var(--items-per-page));
+        padding: 0 var(--list-col-gap);
+    }
+
+    &__media-card {
+        width: 100%;
+        height: auto;
+
+        &:hover {
+            position: absolute;
+            z-index: $z-index--level-2;
+            transition: transform 350ms 50ms ease-in-out;
+        }
+    }
+}
