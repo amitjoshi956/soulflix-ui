@@ -1,0 +1,47 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/variables';
+@import 'assets/scss/color';
+
+.slider-button {
+    --opacity: 0.5;
+    --icon-scale: scale3d(1, 1, 1);
+
+    @include flex-center;
+    height: 100%;
+    width: calc(var(--padding-x) - var(--list-col-gap));
+    border: none;
+    position: absolute;
+    top: 0;
+    z-index: $z-index--level-1;
+    background-color: rgba(32, 36, 42, var(--opacity));
+    cursor: pointer;
+    transition: background-color 250ms ease-in-out;
+
+    &--left {
+        left: 0;
+        border-radius: 0 toRem(4px) toRem(4px) 0;
+    }
+
+    &--right {
+        right: 0;
+        border-radius: toRem(4px) 0 0 toRem(4px);
+    }
+
+    &:hover {
+        --opacity: 0.7;
+        --icon-scale: scale3d(1.5, 1.5, 1.5);
+    }
+
+    &__icon {
+        @include flex-center;
+        color: $color--primary;
+        position: relative;
+
+        svg {
+            @include icon-dimensions(toRem(24px));
+            visibility: var(--btn-icon-visibility);
+            transform: var(--icon-scale);
+            transition: transform 250ms ease-in-out;
+        }
+    }
+}

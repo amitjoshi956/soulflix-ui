@@ -63,10 +63,6 @@
 ********* FLEXBOX ********
 **************************/
 
-@mixin flex {
-    display: flex;
-}
-
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -85,10 +81,11 @@
     align-items: center;
 }
 
-@mixin flex-start-center {
+@mixin flex($main-axis, $cross-axis, $direction: row) {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: $direction;
+    justify-content: $main-axis;
+    align-items: $cross-axis;
 }
 
 /*************************

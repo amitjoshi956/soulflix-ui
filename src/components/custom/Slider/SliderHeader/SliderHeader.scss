@@ -1,0 +1,29 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/variables';
+@import 'assets/scss/color';
+
+.slider-header {
+    @include flex-space-bw-center;
+    padding: 0 var(--padding-x);
+
+    &__title {
+        @include font-style($font-primary, $font-size--lg, $color--primary, $font-weight--regular);
+    }
+
+    &__indicator {
+        @include flex(normal, center);
+        column-gap: 2px;
+    }
+
+    &__indicator-item {
+        width: toRem(10px);
+        height: 2px;
+        border-radius: 1px;
+        background-color: $grey-200;
+        cursor: pointer;
+
+        &--active {
+            background-color: $white-300;
+        }
+    }
+}

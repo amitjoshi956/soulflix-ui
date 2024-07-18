@@ -7,6 +7,7 @@ import YTPlayer from 'components/base/YTPlayer';
 import './SliderCard.scss';
 
 type SliderCardProps = {
+    className?: string;
     videoId: string;
     startTime?: number;
     endTime?: number;
@@ -16,6 +17,7 @@ type SliderCardProps = {
 };
 
 const SliderCard: FC<SliderCardProps> = ({
+    className = '',
     videoId,
     startTime = PLAYER_DEFAULT.START_AT,
     endTime,
@@ -44,7 +46,7 @@ const SliderCard: FC<SliderCardProps> = ({
 
     return (
         <article
-            className="slider-card"
+            className={`slider-card ${className}`.trim()}
             onMouseOver={(e) => handleHoverChange(e, true)}
             onMouseLeave={(e) => handleHoverChange(e, false)}
         >

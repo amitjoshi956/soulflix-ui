@@ -11,6 +11,11 @@ import { IoPlay as PlayIcon } from 'react-icons/io5';
 
 import { DiAtom as AtomIcon } from 'react-icons/di';
 
+import {
+    FaChevronLeft as ChevronLeftIcon,
+    FaChevronRight as ChevronRightIcon,
+} from 'react-icons/fa6';
+
 export {
     PlayIcon,
     AddIcon,
@@ -20,4 +25,6 @@ export {
     VolumeUpOutlineIcon,
     AtomIcon,
     MoreInfoIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
 };

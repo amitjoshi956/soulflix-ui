@@ -6,6 +6,7 @@ const TestPages: { [key: string]: string } = {
     'yt-player': 'YT-Player',
     buttons: 'Buttons',
     'app-header': 'App Header',
+    slider: 'Slider',
 };
 
 const Test = () => {
