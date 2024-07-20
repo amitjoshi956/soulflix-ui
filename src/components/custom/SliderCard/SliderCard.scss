@@ -12,7 +12,7 @@
 }
 
 .slider-card {
-    @include box-shadow(toRem(6px), toRem(6px), toRem(8px), $shadow--color-100);
+    @include box-shadow(toRem(8px), toRem(8px), toRem(10px), $shadow--color-100);
     width: toRem(208px);
     border-radius: toRem(4px);
     background-color: $bg-color--tertiary;
@@ -20,11 +20,12 @@
     overflow: hidden;
     cursor: pointer;
 
-    &:hover {
-        width: toRem(256px);
-        transform: scaleX(1.2) scaleY(1.2);
+    &--hovered {
+        position: absolute;
+        transform: scaleX(1.4) scaleY(1.4);
         border-radius: toRem(5px);
-        z-index: $z-index--level-1;
+        z-index: $z-index--level-2;
+        transition: transform 350ms 50ms ease-in-out;
     }
 
     &__preview {

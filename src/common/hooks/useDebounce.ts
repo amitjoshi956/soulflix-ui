@@ -11,3 +11,13 @@ export const useDebounce = <T>(value: T, delay = 500) => {
 
     return debouncedValue;
 };
+
+export const useDebounceFn = () => {
+    let timer: NodeJS.Timeout;
+    const debouncedFn = (fn: () => void, delay = 500) => {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(fn, delay);
+    };
+
+    return { debouncedFn };
+};

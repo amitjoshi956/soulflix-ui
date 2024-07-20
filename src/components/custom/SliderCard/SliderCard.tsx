@@ -1,4 +1,5 @@
 import { FC, useState, MouseEvent } from 'react';
+import { useDebounceFn } from 'common/hooks/useDebounce';
 import { AddIcon, ArrowDownIcon, PlayIcon } from 'assets/icons';
 import { PLAYER_DEFAULT } from 'core/base/consts/ytPlayer';
 import Button from 'components/base/Button';
@@ -26,10 +27,13 @@ const SliderCard: FC<SliderCardProps> = ({
     tags,
 }) => {
     const [showFullPreview, setShowFullPreview] = useState<boolean>(false);
+    const { debouncedFn } = useDebounceFn();
 
     const handleHoverChange = (e: MouseEvent<HTMLElement>, show: boolean) => {
-        e.stopPropagation();
-        showFullPreview !== show && setShowFullPreview(show);
+        debouncedFn(() => {
+            e.stopPropagation();
+            showFullPreview !== show && setShowFullPreview(show);
+        });
     };
 
     const handlePlay = () => {
@@ -46,7 +50,9 @@ const SliderCard: FC<SliderCardProps> = ({
 
     return (
         <article
-            className={`slider-card ${className}`.trim()}
+            className={`slider-card ${
+                showFullPreview ? 'slider-card--hovered' : ''
+            } ${className}`.trim()}
             onMouseOver={(e) => handleHoverChange(e, true)}
             onMouseLeave={(e) => handleHoverChange(e, false)}
         >
