@@ -4,14 +4,19 @@
 
 .app-header {
     @include flex-start-center;
-    @include bg-blur(2px);
-    padding: toRem(20px) var(--padding-x);
+    @include bg-blur(1px);
+    padding: toRem(16px) var(--padding-x);
     width: calc(100vw - 2 * var(--padding-x));
-    background: linear-gradient(180deg, rgba(16, 20, 26, 0.75) 0%, rgba(16, 20, 26, 0) 100%);
+    background: linear-gradient(180deg, rgba(16, 20, 26, 0.85) 0%, rgba(16, 20, 26, 0) 100%);
     position: fixed;
     z-index: $z-index--level-3;
     top: 0;
     left: 0;
+    transition: background 250ms ease-in-out;
+
+    &--scrolled {
+        background: $bg-color--primary;
+    }
 
     &__title-container {
         margin-right: toRem(60px);
@@ -19,7 +24,7 @@
     }
 
     &__title {
-        @include drop-shadow(4px, 4px, 5px, $black-400);
+        @include drop-shadow(4px, 4px, 5px, $black-200);
         font-family: $font-app-title;
         font-size: $font-size--app-title;
         letter-spacing: 1px;
@@ -41,7 +46,12 @@
     }
 
     &__link {
-        @include font-style($font-primary, $font-size--md, $color--primary, $font-weight--regular);
+        @include font-style(
+            $font-primary,
+            $font-size--base,
+            $color--primary,
+            $font-weight--regular
+        );
         @include flex-center;
         text-decoration: none;
         border: none;
