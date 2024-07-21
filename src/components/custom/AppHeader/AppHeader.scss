@@ -5,8 +5,8 @@
 .app-header {
     @include flex-start-center;
     @include bg-blur(2px);
-    padding: toRem(20px) toRem(40px);
-    width: calc(100vw - toRem(80px));
+    padding: toRem(20px) var(--padding-x);
+    width: calc(100vw - 2 * var(--padding-x));
     background: linear-gradient(180deg, rgba(16, 20, 26, 0.75) 0%, rgba(16, 20, 26, 0) 100%);
     position: fixed;
     z-index: $z-index--level-3;

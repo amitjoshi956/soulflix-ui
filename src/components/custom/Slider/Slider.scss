@@ -4,7 +4,7 @@
 
 .slider {
     --btn-icon-visibility: hidden;
-    --list-col-gap: 0.2vw;
+    --list-col-gap: 0.2rem;
 
     @include flex(space-between, normal, column);
     width: 100vw;
@@ -46,11 +46,5 @@
     &__media-card {
         width: 100%;
         height: auto;
-
-        &:hover {
-            position: absolute;
-            z-index: $z-index--level-2;
-            transition: transform 350ms 50ms ease-in-out;
-        }
     }
 }

@@ -5,7 +5,7 @@
 
 /* Global style properties */
 * {
-    --padding-x: #{toRem(48px)};
+    --padding-x: #{toRem(56px)};
     --items-per-page: 6;
 
     @include tablet {
