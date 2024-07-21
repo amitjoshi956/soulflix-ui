@@ -7,7 +7,7 @@
     padding: 0 var(--padding-x);
 
     &__title {
-        @include font-style($font-primary, $font-size--lg, $color--primary, $font-weight--regular);
+        @include font-style($font-primary, $font-size--h6, $color--primary, $font-weight--regular);
     }
 
     &__indicator {
