@@ -66,6 +66,7 @@ const Billboard: FC<BillboardProps> = ({
                     <Button
                         className="billboard__control-play"
                         variant="default"
+                        size="large"
                         Icon={PlayIcon}
                         label={t('button.play')}
                         onClick={handlePlay}
@@ -73,6 +74,7 @@ const Billboard: FC<BillboardProps> = ({
                     <Button
                         className="billboard__control-more"
                         variant="alt"
+                        size="large"
                         Icon={MoreInfoIcon}
                         label={t('button.moreInfo')}
                         onClick={handleShowMoreDetails}

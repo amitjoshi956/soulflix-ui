@@ -1,0 +1,13 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/variables';
+
+.page {
+    padding-bottom: toRem(56px);
+
+    &__sliders-container {
+        @include flex(center, normal, column);
+        margin-top: toRem(-190px);
+        width: 100%;
+        row-gap: toRem(48px);
+    }
+}

@@ -1,5 +1,7 @@
-import { NavLink } from 'react-router-dom';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
+import { useScroll } from 'common/hooks/useScroll';
 import { NavigationConfig } from 'core/base/consts/appHeader';
 import { isDevEnv } from 'common/utils/env';
 import { Routes } from 'core/base/consts/routes';
@@ -8,11 +10,16 @@ import Button from 'components/base/Button';
 
 import './AppHeader.scss';
 
+const SCROLL_THRESHOLD = 20;
+
 const AppHeader = () => {
     const { t } = useTranslation(['common']);
+    const scrollPosition = useScroll();
+
+    const isScrolled = useMemo(() => scrollPosition > SCROLL_THRESHOLD, [scrollPosition]);
 
     return (
-        <header className="app-header">
+        <header className={`app-header ${isScrolled ? 'app-header--scrolled' : ''}`.trim()}>
             <div className="app-header__title-container">
                 <NavLink className="app-header__title" to={Routes.HOME}>
                     {t('soulflix')}

@@ -9,6 +9,7 @@
     @include flex(space-between, normal, column);
     width: 100vw;
     row-gap: toRem(16px);
+    z-index: $z-index--level-3;
 
     &__carousel {
         @include flex(center, center);
@@ -29,6 +30,7 @@
     &__list {
         --slider-index: 0;
         @include flex-start-center;
+        width: 100%;
         transform: translateX(calc(var(--slider-index) * -100%));
         scroll-behavior: smooth;
         transition: transform 300ms ease-in-out;

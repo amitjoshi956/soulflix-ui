@@ -4,7 +4,7 @@
 @import 'assets/scss/animations';
 
 @mixin show {
-    display: block;
+    display: flex;
 }
 
 @mixin hide {
@@ -24,7 +24,7 @@
         position: absolute;
         transform: scaleX(1.4) scaleY(1.4);
         border-radius: toRem(5px);
-        z-index: $z-index--level-2;
+        z-index: $z-index--level-6;
         transition: transform 350ms 50ms ease-in-out;
     }
 
