@@ -7,6 +7,7 @@ import AppLayout from 'layouts/AppLayout';
 
 const TestRoutes = lazy(() => import('pages/Test/Test.routes'));
 const NotFound = lazy(() => import('pages/NotFound'));
+const Home = lazy(() => import('pages/Home'));
 
 import './App.scss';
 
@@ -15,7 +16,7 @@ function App() {
         <>
             <Suspense fallback={<Loader />}>
                 <Routes>
-                    <Route path={ROUTES.HOME} element={<AppLayout />} />
+                    <Route path={ROUTES.HOME} element={<Home />} />
                     {isDevEnv && (
                         <Route path={`${ROUTES.TEST}/${ROUTES.ANY}`} element={<TestRoutes />} />
                     )}
@@ -23,6 +24,7 @@ function App() {
                     <Route path={ROUTES.ANY} element={<Navigate to={ROUTES.NOT_FOUND} />} />
                 </Routes>
             </Suspense>
+            <AppLayout />
         </>
     );
 }

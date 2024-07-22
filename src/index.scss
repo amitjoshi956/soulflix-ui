@@ -8,6 +8,8 @@
     --padding-x: #{toRem(56px)};
     --items-per-page: 6;
 
+    user-select: none;
+
     @include tablet {
         --items-per-page: 4;
     }

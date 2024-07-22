@@ -1,26 +1,25 @@
 import { FC, useRef, useState } from 'react';
-import { SliderDirection } from 'core/base/consts/slider';
-import { Video } from 'core/base/types/videos';
+import { SliderDirection, SlidesPerPage } from 'core/base/consts/slider';
+import { SliderVideo } from 'core/base/types/videos';
 import SliderCard from 'components/custom/SliderCard';
 import SliderHeader from './SliderHeader';
 import SliderButton from './SliderButton';
 
 import './Slider.scss';
 
-// TODO: fix this type
-type SliderVideo = Pick<Video, 'id' | 'videoId' | 'title' | 'thumbnail' | 'tags'>;
-
 type SliderProps = {
+    className?: string;
     videos: SliderVideo[];
     title: string;
     totalCount: number;
 };
 
-const Slider: FC<SliderProps> = ({ videos, title, totalCount }) => {
+const Slider: FC<SliderProps> = ({ className = '', videos, title, totalCount }) => {
     const [sliderIndex, setSliderIndex] = useState<number>(0);
     const sliderRef = useRef<HTMLUListElement>(null);
 
     const showSlideLeft = sliderIndex !== 0;
+    const showSlideRight = totalCount > SlidesPerPage.LAPTOP;
 
     const handleSlide = (direction: number) => {
         if (sliderRef.current !== null) {
@@ -33,7 +32,7 @@ const Slider: FC<SliderProps> = ({ videos, title, totalCount }) => {
     };
 
     return (
-        <section className="slider">
+        <section className={`slider ${className}`.trim()}>
             <SliderHeader title={title} currentPage={sliderIndex} pageCount={totalCount} />
             <div className="slider__carousel">
                 {showSlideLeft && (
@@ -57,10 +56,12 @@ const Slider: FC<SliderProps> = ({ videos, title, totalCount }) => {
                         ))}
                     </ul>
                 </div>
-                <SliderButton
-                    direction="right"
-                    onClick={() => handleSlide(SliderDirection.RIGHT)}
-                />
+                {showSlideRight && (
+                    <SliderButton
+                        direction="right"
+                        onClick={() => handleSlide(SliderDirection.RIGHT)}
+                    />
+                )}
             </div>
         </section>
     );

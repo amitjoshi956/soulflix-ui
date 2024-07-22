@@ -15,3 +15,5 @@ export type Video = {
     endTime?: number;
     tags: string[];
 };
+
+export type SliderVideo = Pick<Video, 'id' | 'videoId' | 'title' | 'thumbnail' | 'tags'>;
