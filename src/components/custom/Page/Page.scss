@@ -3,6 +3,7 @@
 
 .page {
     padding-bottom: toRem(56px);
+    position: relative;
 
     &__sliders-container {
         @include flex(center, normal, column);

@@ -5,6 +5,7 @@
 .slider-header {
     @include flex-space-bw-center;
     padding: 0 var(--padding-x);
+    z-index: $z-index--level-1;
 
     &__title {
         @include font-style($font-primary, $font-size--h6, $color--primary, $font-weight--regular);
