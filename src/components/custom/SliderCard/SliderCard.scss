@@ -22,7 +22,7 @@
 
     &--hovered {
         position: absolute;
-        transform: scaleX(1.4) scaleY(1.4);
+        transform: scaleX(1.4) scaleY(1.4) translateZ(0);
         border-radius: toRem(5px);
         z-index: $z-index--level-6;
         transition: transform 350ms 50ms ease-in-out;

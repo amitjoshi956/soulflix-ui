@@ -1,5 +1,4 @@
 import { FC, useMemo } from 'react';
-import { SlidesPerPage } from 'core/base/consts/slider';
 
 import './SliderHeader.scss';
 
@@ -10,11 +9,7 @@ type SliderHeaderProps = {
 };
 
 const SliderHeader: FC<SliderHeaderProps> = ({ title, pageCount, currentPage }) => {
-    const sliderListsCount = Math.ceil(pageCount / SlidesPerPage.LAPTOP);
-    const indicatorPages = useMemo(
-        () => Array.from({ length: sliderListsCount }).fill(0),
-        [pageCount]
-    );
+    const indicatorPages = useMemo(() => Array.from({ length: pageCount }).fill(0), [pageCount]);
 
     return (
         <header className="slider-header">
