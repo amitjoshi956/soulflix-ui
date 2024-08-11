@@ -5,20 +5,36 @@
 .slider {
     --btn-icon-visibility: hidden;
     --list-col-gap: 0.2rem;
+    --list-z-index: #{$z-index--level-1};
 
     @include flex(space-between, normal, column);
     width: 100vw;
     row-gap: toRem(16px);
-    // z-index: $z-index--level-3;
+    position: relative;
+
+    &__content {
+        @include flex(center, normal, column);
+        position: relative;
+        z-index: var(--list-z-index);
+
+        &:hover {
+            --btn-icon-visibility: visible;
+            --list-z-index: #{$z-index--level-2};
+        }
+    }
+
+    &__slide-buttons {
+        @include flex(space-between, center);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: $z-index--level-1;
+    }
 
     &__carousel {
         @include flex(center, center);
         height: 100%;
         position: relative;
-
-        &:hover {
-            --btn-icon-visibility: visible;
-        }
     }
 
     &__mask {
@@ -33,6 +49,7 @@
         transform: translateX(calc(var(--slider-index) * -100%));
         scroll-behavior: smooth;
         transition: transform 300ms ease-in-out;
+        // z-index: var(--list-z-index);
     }
 
     &__list-item {
