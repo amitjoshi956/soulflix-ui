@@ -16,4 +16,9 @@ export type Video = {
     tags: string[];
 };
 
-export type SliderVideo = Pick<Video, 'id' | 'videoId' | 'title' | 'thumbnail' | 'tags'>;
+export type VideoBasics = Pick<Video, 'id' | 'videoId' | 'title' | 'thumbnail' | 'tags'>;
+
+export type NowWatchingVideo = Pick<
+    Video,
+    'videoId' | 'title' | 'thumbnail' | 'tags' | 'startTime' | 'endTime'
+>;

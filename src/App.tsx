@@ -7,6 +7,7 @@ import AppLayout from 'layouts/AppLayout';
 
 const TestRoutes = lazy(() => import('pages/Test/Test.routes'));
 const NotFound = lazy(() => import('pages/NotFound'));
+const NowWatching = lazy(() => import('pages/NowWatching'));
 
 import './App.scss';
 
@@ -19,6 +20,7 @@ function App() {
                     {isDevEnv && (
                         <Route path={`${ROUTES.TEST}/${ROUTES.ANY}`} element={<TestRoutes />} />
                     )}
+                    <Route path={`${ROUTES.NOW_WATCHING}/:videoId`} element={<NowWatching />} />
                     <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
                     <Route path={ROUTES.ANY} element={<Navigate to={ROUTES.NOT_FOUND} />} />
                 </Routes>

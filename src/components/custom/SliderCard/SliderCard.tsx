@@ -1,6 +1,8 @@
 import { FC, useState, MouseEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDebounceFn } from 'common/hooks/useDebounce';
 import { AddIcon, ArrowDownIcon, PlayIcon } from 'assets/icons';
+import { Routes } from 'core/base/consts/routes';
 import { PLAYER_DEFAULT } from 'core/base/consts/ytPlayer';
 import Button from 'components/base/Button';
 import YTPlayer from 'components/base/YTPlayer';
@@ -26,8 +28,13 @@ const SliderCard: FC<SliderCardProps> = ({
     thumbnail,
     tags,
 }) => {
+    const navigate = useNavigate();
     const [showFullPreview, setShowFullPreview] = useState<boolean>(false);
     const { debouncedFn } = useDebounceFn();
+
+    const playState = {
+        video: { videoId, title, startTime, endTime },
+    };
 
     const handleHoverChange = (e: MouseEvent<HTMLElement>, show: boolean) => {
         debouncedFn(() => {
@@ -37,15 +44,15 @@ const SliderCard: FC<SliderCardProps> = ({
     };
 
     const handlePlay = () => {
-        // TODO: To be implemented
+        navigate(`${Routes.NOW_WATCHING}/${videoId}`, { state: playState });
     };
 
     const handleAddToMyList = () => {
-        // TODO: To be implemented
+        // TODO: Add video to my list logic
     };
 
     const handleShowMoreDetails = () => {
-        // TODO: To be implemented
+        // TODO: Show more details modal
     };
 
     return (
@@ -56,7 +63,7 @@ const SliderCard: FC<SliderCardProps> = ({
             onMouseOver={(e) => handleHoverChange(e, true)}
             onMouseLeave={(e) => handleHoverChange(e, false)}
         >
-            <div className="slider-card__preview">
+            <div className="slider-card__preview" onClick={handlePlay}>
                 <img
                     className={`slider-card__thumbnail slider-card__thumbnail--${
                         !showFullPreview ? 'show' : 'hide'

@@ -7,7 +7,7 @@ import {
     MdInfoOutline as MoreInfoIcon,
 } from 'react-icons/md';
 
-import { IoPlay as PlayIcon } from 'react-icons/io5';
+import { IoPlay as PlayIcon, IoArrowBack as BackArrowIcon } from 'react-icons/io5';
 
 import { DiAtom as AtomIcon } from 'react-icons/di';
 
@@ -27,4 +27,5 @@ export {
     MoreInfoIcon,
     ChevronLeftIcon,
     ChevronRightIcon,
+    BackArrowIcon,
 };
