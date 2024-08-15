@@ -1,9 +1,9 @@
-import { SliderVideo } from './videos';
+import { VideoBasics } from './videos';
 
 export type Category = {
     id: string;
     title: string;
-    items: SliderVideo[];
+    items: VideoBasics[];
     description?: string;
     showOnLandingPage?: boolean;
 };

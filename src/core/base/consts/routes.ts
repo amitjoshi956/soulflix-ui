@@ -6,5 +6,6 @@ export const Routes = {
     WATCHLIST: '/watch-list',
     TEST: '/test',
     NOT_FOUND: '/not-found',
+    NOW_WATCHING: '/now-watching',
     ANY: '*',
 };

@@ -1,10 +1,10 @@
 import Page from 'components/custom/Page';
-import { SliderVideo } from 'core/base/types/videos';
+import { VideoBasics } from 'core/base/types/videos';
 import { Category } from 'core/base/types/category';
 
 import './Home.scss';
 
-const sliderData: SliderVideo[] = Array.from({ length: 20 }, (_, index) => ({
+const sliderData: VideoBasics[] = Array.from({ length: 20 }, (_, index) => ({
     id: `vid-${index}`,
     videoId: 'abmsniEmfh0',
     title: `Test video ${index + 1}`,

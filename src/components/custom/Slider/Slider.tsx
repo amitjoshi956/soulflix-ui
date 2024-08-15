@@ -1,6 +1,6 @@
 import { FC, useRef, useState } from 'react';
 import { SliderDirection, SlidesPerPage } from 'core/base/consts/slider';
-import { SliderVideo } from 'core/base/types/videos';
+import { VideoBasics } from 'core/base/types/videos';
 import SliderCard from 'components/custom/SliderCard';
 import SliderHeader from './SliderHeader';
 import SliderButton from './SliderButton';
@@ -9,7 +9,7 @@ import './Slider.scss';
 
 type SliderProps = {
     className?: string;
-    videos: SliderVideo[];
+    videos: VideoBasics[];
     title: string;
     totalCount: number;
 };
@@ -43,6 +43,20 @@ const Slider: FC<SliderProps> = ({ className = '', videos, title, totalCount }) 
         <section className={`slider ${className}`.trim()}>
             <SliderHeader title={title} currentPage={sliderIndex} pageCount={pageCount} />
             <div className="slider__content">
+                <div className="slider__slide-buttons">
+                    {showSlideLeft && (
+                        <SliderButton
+                            direction="left"
+                            onClick={() => handleSlide(SliderDirection.LEFT)}
+                        />
+                    )}
+                    {showSlideRight && (
+                        <SliderButton
+                            direction="right"
+                            onClick={() => handleSlide(SliderDirection.RIGHT)}
+                        />
+                    )}
+                </div>
                 <div className="slider__carousel">
                     <div className="slider__mask">
                         <ul className="slider__list" ref={sliderRef}>
@@ -59,20 +73,6 @@ const Slider: FC<SliderProps> = ({ className = '', videos, title, totalCount }) 
                             ))}
                         </ul>
                     </div>
-                </div>
-                <div className="slider__slide-buttons">
-                    {showSlideLeft && (
-                        <SliderButton
-                            direction="left"
-                            onClick={() => handleSlide(SliderDirection.LEFT)}
-                        />
-                    )}
-                    {showSlideRight && (
-                        <SliderButton
-                            direction="right"
-                            onClick={() => handleSlide(SliderDirection.RIGHT)}
-                        />
-                    )}
                 </div>
             </div>
         </section>
