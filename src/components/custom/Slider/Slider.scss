@@ -58,6 +58,7 @@
         box-sizing: border-box;
         position: relative;
         width: calc(100% / var(--items-per-page));
+        aspect-ratio: $aspect-ratio--landscape;
         padding: 0 var(--list-col-gap);
     }
 
