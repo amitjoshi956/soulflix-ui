@@ -1,3 +1,5 @@
-import { useDebounce } from './useDebounce';
+import { useDebounce, useDebounceFn } from './useDebounce';
+import { useScroll } from './useScroll';
+import { useIdle } from './useIdle';
 
-export { useDebounce };
+export { useDebounce, useDebounceFn, useScroll, useIdle };
