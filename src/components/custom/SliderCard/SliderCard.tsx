@@ -32,10 +32,6 @@ const SliderCard: FC<SliderCardProps> = ({
     const [showFullPreview, setShowFullPreview] = useState<boolean>(false);
     const { debouncedFn } = useDebounceFn();
 
-    const playState = {
-        video: { videoId, title, startTime, endTime },
-    };
-
     const handleHoverChange = (e: MouseEvent<HTMLElement>, show: boolean) => {
         debouncedFn(() => {
             e.stopPropagation();
@@ -44,7 +40,7 @@ const SliderCard: FC<SliderCardProps> = ({
     };
 
     const handlePlay = () => {
-        navigate(`${Routes.NOW_WATCHING}/${videoId}`, { state: playState });
+        navigate(`${Routes.NOW_WATCHING}/${videoId}`);
     };
 
     const handleAddToMyList = () => {
