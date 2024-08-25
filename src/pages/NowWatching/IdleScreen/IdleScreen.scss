@@ -1,0 +1,44 @@
+@import 'assets/scss/mixins';
+@import 'assets/scss/variables';
+@import 'assets/scss/color';
+
+.idle-screen {
+    @include flex(flex-start, center);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: hexa($bg-color--primary, 0.6);
+    transition: background-color 200ms ease-in-out;
+    z-index: $z-index--level-6;
+
+    &__content {
+        margin: toRem(-100px) toRem(120px) 0;
+    }
+
+    &__you-are-watching {
+        @include font-style($font-primary, $font-size--base, $white-300, $font-weight--regular);
+    }
+
+    &__title {
+        @include font-style($font-primary, $font-size--h1, $color--primary);
+        margin: toRem(8px) 0 toRem(20px);
+    }
+
+    &__secondary-info {
+        @include flex(flex-start, center);
+        column-gap: toRem(10px);
+    }
+
+    &__added-date,
+    &__remaining-time,
+    &__episode {
+        @include font-style($font-primary, $font-size--lg, $white-250, $font-weight--bold);
+    }
+
+    &__description {
+        @include font-style($font-primary, $font-size--base, $white-300, $font-weight--regular);
+        margin-top: toRem(20px);
+    }
+}

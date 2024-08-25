@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 /************************
 ****** CONVERSIONS ******
 *************************/
@@ -133,4 +135,12 @@
 
 @mixin text-shadow($x-offset, $y-offset, $blur-radius, $color: $shadow--color-200) {
     text-shadow: $x-offset $y-offset $blur-radius $color;
+}
+
+/*************************
+********* COLORS *********
+**************************/
+
+@function hexa($hexColor, $alpha) {
+    @return rgba(color.red($hexColor), color.green($hexColor), color.blue($hexColor), $alpha);
 }
