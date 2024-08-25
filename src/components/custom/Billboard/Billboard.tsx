@@ -1,6 +1,8 @@
 import { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PlayIcon, MoreInfoIcon, VolumeOffOutlineIcon, VolumeUpOutlineIcon } from 'assets/icons';
+import { Routes } from 'core/base/consts/routes';
 import { VideoParams } from 'core/base/types/ytPlayer';
 import YTPlayer from 'components/base/YTPlayer';
 import Button from 'components/base/Button';
@@ -25,6 +27,7 @@ const Billboard: FC<BillboardProps> = ({
     onToggleVolume,
 }) => {
     const { t } = useTranslation(['billboard']);
+    const navigate = useNavigate();
     const [muted, setMuted] = useState(false);
 
     const volIcon = muted ? VolumeOffOutlineIcon : VolumeUpOutlineIcon;
@@ -39,7 +42,7 @@ const Billboard: FC<BillboardProps> = ({
     };
 
     const handlePlay = () => {
-        // TODO: To be implemented
+        navigate(`${Routes.NOW_WATCHING}/${videoId}`);
         onPlay();
     };
 
